@@ -50,7 +50,7 @@ public class MovingSphere : MonoBehaviour {
 
 	[SerializeField]
 	LayerMask probeMask = -1, climbMask = -1, waterMask = 0;
-	
+
 
 	Rigidbody body, connectedBody, previousConnectedBody;
 
@@ -106,25 +106,31 @@ public class MovingSphere : MonoBehaviour {
 	}
 
 	void Update () {
-		playerInput.x = Input.GetAxis("Horizontal");
-		playerInput.z = Input.GetAxis("Vertical");
-		playerInput.y = Swimming ? Input.GetAxis("UpDown") : 0f;
+		playerInput.x = Input.GetAxisRaw("Horizontal");
+		playerInput.z = Input.GetAxisRaw("Vertical");
+		playerInput.y = Swimming ? Input.GetAxisRaw("UpDown") : 0f;
 		playerInput = Vector3.ClampMagnitude(playerInput, 1f);
 
-		if (playerInputSpace) {
+		if (playerInputSpace) 
+		{
 			rightAxis = ProjectDirectionOnPlane(playerInputSpace.right, upAxis);
 			forwardAxis =
 				ProjectDirectionOnPlane(playerInputSpace.forward, upAxis);
 		}
-		else {
+		else 
+		{
 			rightAxis = ProjectDirectionOnPlane(Vector3.right, upAxis);
 			forwardAxis = ProjectDirectionOnPlane(Vector3.forward, upAxis);
 		}
 
-		if (Swimming) {
+		if (Swimming) 
+		{
 			desiresClimbing = false;
+			rightAxis=  Camera.main.transform.right;
+			forwardAxis = Camera.main.transform.forward;
 		}
-		else {
+		else 
+		{
 			desiredJump |= Input.GetButtonDown("Jump");
 			desiresClimbing = Input.GetButton("Climb");
 		}
@@ -316,8 +322,12 @@ public class MovingSphere : MonoBehaviour {
 			xAxis = rightAxis;
 			zAxis = forwardAxis;
 		}
-		xAxis = ProjectDirectionOnPlane(xAxis, contactNormal);
-		zAxis = ProjectDirectionOnPlane(zAxis, contactNormal);
+
+		if(!InWater)
+		{
+			xAxis = ProjectDirectionOnPlane(xAxis, contactNormal);
+			zAxis = ProjectDirectionOnPlane(zAxis, contactNormal);
+		}
 
 		Vector3 relativeVelocity = velocity - connectionVelocity;
 
