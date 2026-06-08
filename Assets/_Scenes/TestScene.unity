@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0, g: 0.6075659, b: 0.9339623, a: 1}
+  m_FogColor: {r: 0, g: 0.8701009, b: 0.93333334, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.19166073, g: 0.6042799, b: 0.6886792, a: 1}
+  m_SubtractiveShadowColor: {r: 0.47552508, g: 0.6907536, b: 0.735849, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: cb9193b578c3b6f4bbda8e02c2af1114, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -1065,8 +1065,8 @@ MonoBehaviour:
   maxAcceleration: 20
   maxAirAcceleration: 10
   maxClimbAcceleration: 40
-  maxSwimAcceleration: 20
-  jumpHeight: 2
+  maxSwimAcceleration: 10
+  jumpHeight: 1.25
   maxAirJumps: 0
   maxGroundAngle: 25
   maxClimbAngle: 140

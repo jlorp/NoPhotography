@@ -144,7 +144,14 @@ public class MovingSphere : MonoBehaviour {
 			velocity *= 1f - waterDrag * submergence * Time.deltaTime;
 		}
 
-		AdjustVelocity();
+		if(Swimming)
+		{
+			AdjustVelocityWater();
+		}
+		else
+		{
+			AdjustVelocity();
+		}
 
 		if (desiredJump) {
 			desiredJump = false;
@@ -295,6 +302,22 @@ public class MovingSphere : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	void AdjustVelocityWater()
+	{
+		float swimFactor = Mathf.Min(1f, submergence / swimThreshold);
+		float acceleration = maxSwimAcceleration;
+		Vector3 xAxis = rightAxis;
+		Vector3 zAxis = forwardAxis;
+		Vector3 relativeVelocity = velocity - connectionVelocity;
+
+		Vector3 playerInputLocal = zAxis * playerInput.z + xAxis * playerInput.x + Vector3.up * playerInput.y;
+		playerInputLocal = Vector3.ClampMagnitude(playerInputLocal, 1);
+
+		Vector3 targetSpeed = playerInputLocal * maxSwimSpeed;
+
+		velocity = Vector3.MoveTowards(velocity, targetSpeed, acceleration * Time.deltaTime); 
 	}
 
 	void AdjustVelocity () {
