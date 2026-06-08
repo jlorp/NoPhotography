@@ -90,6 +90,9 @@ public class MovingSphere : MonoBehaviour {
 
 	int stepsSinceLastGrounded, stepsSinceLastJump;
 
+	[Header("Dependencies")]
+	[SerializeField]
+	CameraLogic _camera;
 
 	MeshRenderer meshRenderer;
 
@@ -109,11 +112,6 @@ public class MovingSphere : MonoBehaviour {
 		CameraOpen = false;
 	}
 
-	void CameraControls()
-	{
-		float zoomInput = Input.GetAxisRaw("CameraZoom");
-		UIManager.Instance.Zoom(zoomInput);
-	}
 
 	void Update () {
 		playerInput.x = Input.GetAxisRaw("Horizontal");
@@ -123,7 +121,7 @@ public class MovingSphere : MonoBehaviour {
 
 		if(CameraOpen)
 		{
-			CameraControls();
+			_camera.CameraControls();
 		}
 
 		if(Input.GetButtonDown("Open Camera"))

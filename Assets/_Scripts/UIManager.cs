@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     [SerializeField]
     GameObject cameraUIParent;
+    [SerializeField]
+    Image flashImage; 
+
     public float minFov = 50;
     public float maxFov = 30;
 
@@ -14,6 +18,27 @@ public class UIManager : MonoBehaviour
     {
         Instance = this;
         CloseCamera();
+    }
+
+    public void TakePicture()
+    {
+        StartCoroutine(CameraFlash());
+    }
+
+    IEnumerator CameraFlash()
+    {
+        float duration = 0.3f;
+        float time = 0f;
+
+        flashImage.color = new Color(255f, 255f, 255f, 1f); 
+        while (time < duration) 
+        {
+            time += Time.deltaTime;
+            float percentComplete = time/duration;
+            flashImage.color = new Color(255f, 255f, 255f, 1 - percentComplete); 
+            yield return null; 
+        }
+        flashImage.color = new Color(255f, 255f, 255f, 0f); 
     }
 
     public void Zoom(float inOut)
