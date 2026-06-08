@@ -76,6 +76,8 @@ public class MovingSphere : MonoBehaviour {
 
 	bool Climbing => climbContactCount > 0 && stepsSinceLastJump > 2;
 
+	bool CameraOpen = false;
+
 	bool InWater => submergence > 0f;
 
 	bool Swimming => submergence >= swimThreshold;
@@ -87,6 +89,7 @@ public class MovingSphere : MonoBehaviour {
 	float minGroundDotProduct, minClimbDotProduct;
 
 	int stepsSinceLastGrounded, stepsSinceLastJump;
+
 
 	MeshRenderer meshRenderer;
 
@@ -103,6 +106,13 @@ public class MovingSphere : MonoBehaviour {
 		body = GetComponent<Rigidbody>();
 		body.useGravity = false;
 		OnValidate();
+		CameraOpen = false;
+	}
+
+	void CameraControls()
+	{
+		float zoomInput = Input.GetAxisRaw("CameraZoom");
+		UIManager.Instance.Zoom(zoomInput);
 	}
 
 	void Update () {
@@ -110,6 +120,25 @@ public class MovingSphere : MonoBehaviour {
 		playerInput.z = Input.GetAxisRaw("Vertical");
 		playerInput.y = Swimming ? Input.GetAxisRaw("UpDown") : 0f;
 		playerInput = Vector3.ClampMagnitude(playerInput, 1f);
+
+		if(CameraOpen)
+		{
+			CameraControls();
+		}
+
+		if(Input.GetButtonDown("Open Camera"))
+		{
+			if (CameraOpen)
+			{
+				UIManager.Instance.CloseCamera();
+				CameraOpen = false;
+			}
+			else
+			{
+				UIManager.Instance.OpenCamera();
+				CameraOpen = true;
+			}
+		}
 
 		if (playerInputSpace) 
 		{
@@ -122,7 +151,7 @@ public class MovingSphere : MonoBehaviour {
 			rightAxis = ProjectDirectionOnPlane(Vector3.right, upAxis);
 			forwardAxis = ProjectDirectionOnPlane(Vector3.forward, upAxis);
 		}
-
+		
 		if (Swimming) 
 		{
 			desiresClimbing = false;
