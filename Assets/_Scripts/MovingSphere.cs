@@ -3,7 +3,7 @@ using UnityEngine;
 public class MovingSphere : MonoBehaviour {
 
 	[SerializeField]
-	Transform playerInputSpace = default, ball = default;
+	Transform playerInputSpace = default;
 
 	[SerializeField, Range(0f, 100f)]
 	float maxSpeed = 10f, maxClimbSpeed = 4f, maxSwimSpeed = 5f;
@@ -50,23 +50,7 @@ public class MovingSphere : MonoBehaviour {
 
 	[SerializeField]
 	LayerMask probeMask = -1, climbMask = -1, waterMask = 0;
-
-	[SerializeField]
-	Material
-		normalMaterial = default,
-		climbingMaterial = default,
-		swimmingMaterial = default;
-
-	[SerializeField, Min(0.1f)]
-	float ballRadius = 0.5f;
-
-	[SerializeField, Min(0f)]
-	float ballAlignSpeed = 180f;
-
-	[SerializeField, Min(0f)]
-	float
-		ballAirRotation = 0.5f,
-		ballSwimRotation = 2f;
+	
 
 	Rigidbody body, connectedBody, previousConnectedBody;
 
@@ -118,7 +102,6 @@ public class MovingSphere : MonoBehaviour {
 	void Awake () {
 		body = GetComponent<Rigidbody>();
 		body.useGravity = false;
-		meshRenderer = ball.GetComponent<MeshRenderer>();
 		OnValidate();
 	}
 
@@ -144,80 +127,6 @@ public class MovingSphere : MonoBehaviour {
 		else {
 			desiredJump |= Input.GetButtonDown("Jump");
 			desiresClimbing = Input.GetButton("Climb");
-		}
-
-		UpdateBall();
-	}
-
-	void UpdateBall () {
-		Material ballMaterial = normalMaterial;
-		Vector3 rotationPlaneNormal = lastContactNormal;
-		float rotationFactor = 1f;
-		if (Climbing) {
-			ballMaterial = climbingMaterial;
-		}
-		else if (Swimming) {
-			ballMaterial = swimmingMaterial;
-			rotationFactor = ballSwimRotation;
-		}
-		else if (!OnGround) {
-			if (OnSteep) {
-				rotationPlaneNormal = lastSteepNormal;
-			}
-			else {
-				rotationFactor = ballAirRotation;
-			}
-		}
-		meshRenderer.material = ballMaterial;
-
-		Vector3 movement =
-			(body.velocity - lastConnectionVelocity) * Time.deltaTime;
-		movement -=
-			rotationPlaneNormal * Vector3.Dot(movement, rotationPlaneNormal);
-
-		float distance = movement.magnitude;
-
-		Quaternion rotation = ball.localRotation;
-		if (connectedBody && connectedBody == previousConnectedBody) {
-			rotation = Quaternion.Euler(
-				connectedBody.angularVelocity * (Mathf.Rad2Deg * Time.deltaTime)
-			) * rotation;
-			if (distance < 0.001f) {
-				ball.localRotation = rotation;
-				return;
-			}
-		}
-		else if (distance < 0.001f) {
-			return;
-		}
-
-		float angle = distance * rotationFactor * (180f / Mathf.PI) / ballRadius;
-		Vector3 rotationAxis =
-			Vector3.Cross(rotationPlaneNormal, movement).normalized;
-		rotation = Quaternion.Euler(rotationAxis * angle) * rotation;
-		if (ballAlignSpeed > 0f) {
-			rotation = AlignBallRotation(rotationAxis, rotation, distance);
-		}
-		ball.localRotation = rotation;
-	}
-
-	Quaternion AlignBallRotation (
-		Vector3 rotationAxis, Quaternion rotation, float traveledDistance
-	) {
-		Vector3 ballAxis = ball.up;
-		float dot = Mathf.Clamp(Vector3.Dot(ballAxis, rotationAxis), -1f, 1f);
-		float angle = Mathf.Acos(dot) * Mathf.Rad2Deg;
-		float maxAngle = ballAlignSpeed * traveledDistance;
-
-		Quaternion newAlignment =
-			Quaternion.FromToRotation(ballAxis, rotationAxis) * rotation;
-		if (angle <= maxAngle) {
-			return newAlignment;
-		}
-		else {
-			return Quaternion.SlerpUnclamped(
-				rotation, newAlignment, maxAngle / angle
-			);
 		}
 	}
 
