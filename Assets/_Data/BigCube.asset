@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c878f807ae13f3949a478870b09981dd, type: 3}
   m_Name: BigCube
   m_EditorClassIdentifier: 
-  ItemName: 
+  ItemName: BigCube

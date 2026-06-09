@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraLogic : MonoBehaviour
 {
     bool picReady = true;
+	public List<Item> PhotoContents;
 
     public void CameraControls()
 	{
@@ -18,8 +19,27 @@ public class CameraLogic : MonoBehaviour
 		{
 			UIManager.Instance.TakePicture();
             picReady = false;
-			RaycastArray(15, 10);
+			RaycastHit[] photoCasts = RaycastArray(15, 10);
+			PhotoContents = SortArray(photoCasts);
 		}
+	}
+
+	List<Item> SortArray(RaycastHit[] hits)
+	{
+		List<Item> itemList = new List<Item>();
+
+		foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider != null && hit.collider.gameObject.TryGetComponent<Item>(out Item _item))
+			{
+				if(!itemList.Contains(_item))
+				{
+					itemList.Add(_item);
+				}
+			}
+        }
+
+		return itemList;
 	}
 
 	RaycastHit[] RaycastArray(int castDensity, float castDistance)
@@ -38,8 +58,7 @@ public class CameraLogic : MonoBehaviour
 				Vector3 point = cam.ScreenToWorldPoint(new Vector3(xPosition, yPosition, cam.nearClipPlane));
 				Vector3 direction = (point - cam.transform.position).normalized;
 
-				Debug.DrawRay(point, direction * castDistance, Color.red, 2);
-
+				//Debug.DrawRay(point, direction * castDistance, Color.red, 2);
 				Physics.Raycast(point, direction, out hits[x*y], castDistance);
             }
         }
