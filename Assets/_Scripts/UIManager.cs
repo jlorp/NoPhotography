@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator HidePhotoAfterDelay()
     {
-        float duration = 2f;
+        float duration = 1.5f;
         float time = 0f;
 
         while (time < duration) 
