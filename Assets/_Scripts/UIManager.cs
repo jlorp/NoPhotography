@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     GameObject cameraUIParent;
     [SerializeField]
     Image flashImage; 
+    [SerializeField]
+    public RectTransform viewfinderBounds;
 
     public float minFov = 50;
     public float maxFov = 30;

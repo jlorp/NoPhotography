@@ -19,7 +19,7 @@ public class CameraLogic : MonoBehaviour
 		{
 			UIManager.Instance.TakePicture();
             picReady = false;
-			RaycastHit[] photoCasts = RaycastArray(15, 10);
+			RaycastHit[] photoCasts = RaycastArray(20, 30);
 			PhotoContents = SortArray(photoCasts);
 		}
 	}
@@ -44,22 +44,37 @@ public class CameraLogic : MonoBehaviour
 
 	RaycastHit[] RaycastArray(int castDensity, float castDistance)
 	{
-		int castAmount = castDensity * castDensity;
+		int castAmount = (castDensity) * (castDensity);
 		RaycastHit[] hits = new RaycastHit[castAmount];
+
+		//Set Array Spacing
+		Vector3[] corners = new Vector3[4];
+        UIManager.Instance.viewfinderBounds.GetWorldCorners(corners);
+
+		Vector3 startPosition = corners[1];
+		Vector3 endPosition = corners[3];
+
+		float screenWidth = endPosition.x - startPosition.x;
+		float spacingX = screenWidth/ (castDensity-1);
+
+		float screenHeight = endPosition.y - startPosition.y;
+		float spacingY = screenHeight / (castDensity-1);
 
 		Camera cam = Camera.main;
 		for (int x = 0; x < castDensity; x++)
         {
             for (int y = 0; y < castDensity; y++)
             {
-				int xPosition = (Screen.width / (castDensity - 1)) * x;
-				int yPosition = (Screen.height / (castDensity - 1)) * y;
+				int index = (y * castDensity) + x;
+				float xPosition = startPosition.x + (spacingX * x);
+				float yPosition = startPosition.y + (spacingY * y);
 
 				Vector3 point = cam.ScreenToWorldPoint(new Vector3(xPosition, yPosition, cam.nearClipPlane));
 				Vector3 direction = (point - cam.transform.position).normalized;
 
 				//Debug.DrawRay(point, direction * castDistance, Color.red, 2);
-				Physics.Raycast(point, direction, out hits[x*y], castDistance);
+				if(Physics.Raycast(point, direction, out hits[index], castDistance))
+					Debug.DrawRay(hits[index].point, -direction * hits[index].distance, Color.red, 2);
             }
         }
 		return hits;
