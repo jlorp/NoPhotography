@@ -12,11 +12,13 @@ public class UIManager : MonoBehaviour
     Image flashImage; 
     [SerializeField]
     public RectTransform viewfinderBounds;
+    [SerializeField]
+    GameObject PhotoParent;
 
     public float minFov = 50;
     public float maxFov = 30;
 
-    void Start()
+    void Awake()
     {
         Instance = this;
         CloseCamera();
@@ -27,20 +29,35 @@ public class UIManager : MonoBehaviour
         StartCoroutine(CameraFlash());
     }
 
-    IEnumerator CameraFlash()
+    IEnumerator HidePhotoAfterDelay()
     {
-        float duration = 0.3f;
+        float duration = 2f;
         float time = 0f;
 
-        flashImage.color = new Color(255f, 255f, 255f, 1f); 
         while (time < duration) 
         {
+            time += Time.deltaTime;
+            yield return null; 
+        }
+        PhotoParent.SetActive(false);
+    }
+
+    IEnumerator CameraFlash()
+    {
+        float duration = 0.5f;
+        float time = 0f;
+        yield return null; 
+
+        while (time < duration) 
+        {
+            PhotoParent.SetActive(true);
             time += Time.deltaTime;
             float percentComplete = time/duration;
             flashImage.color = new Color(255f, 255f, 255f, 1 - percentComplete); 
             yield return null; 
         }
-        flashImage.color = new Color(255f, 255f, 255f, 0f); 
+        flashImage.color = new Color(255f, 255f, 255f, 0f);
+        StartCoroutine(HidePhotoAfterDelay());
     }
 
     public void Zoom(float inOut)

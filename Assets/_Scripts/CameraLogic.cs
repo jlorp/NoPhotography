@@ -6,6 +6,33 @@ public class CameraLogic : MonoBehaviour
 {
     bool picReady = true;
 	public List<Item> PhotoContents;
+	public PhotoCapture _photoCapture;
+
+	Vector3 viewfinderBounds;
+	float viewFinderWidth;
+	float viewfinderHeight;
+	Vector2 viewFinderCenter;
+	public Rect viewportRect;
+
+	void Start()
+	{
+		SetViewFinderVariables();
+	}
+
+	void SetViewFinderVariables()
+	{
+		//Set Array Spacing
+		Vector3[] corners = new Vector3[4];
+        UIManager.Instance.viewfinderBounds.GetWorldCorners(corners);
+
+		Vector3 startPosition = corners[1];
+		Vector3 endPosition = corners[3];
+
+		viewFinderWidth = endPosition.x - startPosition.x;
+		viewfinderHeight = endPosition.y - startPosition.y;
+		viewFinderCenter = new Vector2(210,85);
+		viewportRect = new Rect(viewFinderCenter.x, viewFinderCenter.y, viewFinderWidth, Mathf.Abs(viewfinderHeight));
+	}
 
     public void CameraControls()
 	{
@@ -17,6 +44,7 @@ public class CameraLogic : MonoBehaviour
 
 		if((picReady && shutterAxis > .9f) || Input.GetButtonDown("Shutter Mouse"))
 		{
+			_photoCapture.TakePicture(viewportRect);
 			UIManager.Instance.TakePicture();
             picReady = false;
 			RaycastHit[] photoCasts = RaycastArray(20, 30);
@@ -38,7 +66,6 @@ public class CameraLogic : MonoBehaviour
 				}
 			}
         }
-
 		return itemList;
 	}
 
@@ -72,9 +99,14 @@ public class CameraLogic : MonoBehaviour
 				Vector3 point = cam.ScreenToWorldPoint(new Vector3(xPosition, yPosition, cam.nearClipPlane));
 				Vector3 direction = (point - cam.transform.position).normalized;
 
-				//Debug.DrawRay(point, direction * castDistance, Color.red, 2);
 				if(Physics.Raycast(point, direction, out hits[index], castDistance))
-					Debug.DrawRay(hits[index].point, -direction * hits[index].distance, Color.red, 2);
+				{
+					//Debug.DrawRay(hits[index].point, -direction * hits[index].distance, Color.green, 2);
+				}
+				else
+				{
+					//Debug.DrawRay(point, direction * castDistance, Color.red, 2);
+				}
             }
         }
 		return hits;
