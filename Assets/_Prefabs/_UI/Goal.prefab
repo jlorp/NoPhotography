@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 781356974609283720}
   - component: {fileID: 619438485870002786}
   - component: {fileID: 7754730588772612579}
+  - component: {fileID: 6173292725894143701}
   m_Layer: 5
   m_Name: Goal
   m_TagString: Untagged
@@ -210,3 +211,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2
+--- !u!114 &6173292725894143701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047131052853389749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220ae47d07bea8743b16ba84218647f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalText: {fileID: 8034733278464107778}

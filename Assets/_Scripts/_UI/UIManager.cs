@@ -7,23 +7,21 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [SerializeField]
-    GameObject cameraUIParent;
+    [Header("Camera Menu")]
 
-    [SerializeField]
-    Image flashImage; 
-
-    [SerializeField]
+    public GameObject cameraUIParent;
+    public Image flashImage; 
     public RectTransform viewfinderBounds;
-
-    [SerializeField]
-    GameObject photoParent;
-
-    [SerializeField]
-    GameObject pauseMenuUI;
+    public GameObject photoParent;
 
     public float minFov = 50;
     public float maxFov = 30;
+
+
+    [Header("Pause Menu")]
+
+    public GameObject pauseMenuUI;
+    public GameObject goalListParent;
 
     public static bool gameIsPaused = false;
 
@@ -35,7 +33,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetButtonDown("Pause"))
         {
             if(gameIsPaused)
             {
