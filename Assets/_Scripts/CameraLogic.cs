@@ -30,8 +30,6 @@ public class CameraLogic : MonoBehaviour
 		Vector3 startPosition = corners[1];
 		Vector3 endPosition = corners[3];
 
-		Debug.Log(endPosition);
-
 		viewFinderWidth = endPosition.x - startPosition.x;
 		viewfinderHeight = endPosition.y - startPosition.y;
 		viewFinderCenter = new Vector2(startPosition.x,endPosition.y);

@@ -66,6 +66,8 @@ public class GoalManager : MonoBehaviour
         Goals.Remove(finishedGoal);
         FinishedGoals.Add(finishedGoal);
         
+        UIManager.Instance.Popup("Goal Complete: " + finishedGoal.GoalName);
+
         Transform goalParent = UIManager.Instance.goalListParent.transform;
 
         foreach(Transform child in goalParent)

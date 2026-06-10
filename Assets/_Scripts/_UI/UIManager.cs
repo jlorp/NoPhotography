@@ -25,6 +25,10 @@ public class UIManager : MonoBehaviour
 
     public static bool gameIsPaused = false;
 
+    [Header("Popup")]
+    public GameObject popupUiTransform;
+    public PopupUI _popupUI;
+
     void Awake()
     {
         Instance = this;
@@ -60,14 +64,21 @@ public class UIManager : MonoBehaviour
         gameIsPaused = true;
     }
 
+    public void Popup(string newtext)
+    {
+        popupUiTransform.SetActive(true);
+        _popupUI.UpdatePopupText(newtext);
+        StartCoroutine(HideGameObjectAfterDelay(popupUiTransform,2f));
+    }
+
+
     public void TakePicture()
     {
         StartCoroutine(CameraFlash());
     }
 
-    IEnumerator HidePhotoAfterDelay()
+    IEnumerator HideGameObjectAfterDelay(GameObject _tohide, float duration)
     {
-        float duration = 1.5f;
         float time = 0f;
 
         while (time < duration) 
@@ -75,7 +86,7 @@ public class UIManager : MonoBehaviour
             time += Time.deltaTime;
             yield return null; 
         }
-        photoParent.SetActive(false);
+        _tohide.SetActive(false);
     }
 
     IEnumerator CameraFlash()
@@ -93,7 +104,7 @@ public class UIManager : MonoBehaviour
             yield return null; 
         }
         flashImage.color = new Color(255f, 255f, 255f, 0f);
-        StartCoroutine(HidePhotoAfterDelay());
+        StartCoroutine(HideGameObjectAfterDelay(photoParent,1.5f));
     }
 
     public void Zoom(float inOut)
