@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7651363303924283304
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MAT_CausticsGround Variant
+  m_Shader: {fileID: -6465566751694194690, guid: 6c4f9a08522840449bd4d04a2eb348c8, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 6c4f9a08522840449bd4d04a2eb348c8, type: 3}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _BUILTIN_QueueControl: 0
+    - _CausticIntensity: 1
+    - _Caustic_01_Intensity: 0.75
+    - _Caustic_02_Intensity: 2.5
+    - _Caustic_03_Intensity: 0.5
+    - _Speed01: 0.01
+    - _Speed02: 0.01
+    - _Speed03: 0.01
+    m_Colors:
+    - _Caustic_01_Scale: {r: 17, g: 17, b: 0, a: 0}
+    - _Caustic_02_Scale: {r: 22, g: 22, b: 0, a: 0}
+    - _Caustic_03_Scale: {r: 12, g: 12, b: 0, a: 0}
+    - _Caustics_Tiling: {r: 50, g: 50, b: 0, a: 0}
+    - _Scroll_Speed: {r: 0.1, g: 0.1, b: 0, a: 0}
+  m_BuildTextureStacks: []
