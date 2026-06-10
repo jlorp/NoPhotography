@@ -6,22 +6,60 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+
     [SerializeField]
     GameObject cameraUIParent;
+
     [SerializeField]
     Image flashImage; 
+
     [SerializeField]
     public RectTransform viewfinderBounds;
+
     [SerializeField]
-    GameObject PhotoParent;
+    GameObject photoParent;
+
+    [SerializeField]
+    GameObject pauseMenuUI;
 
     public float minFov = 50;
     public float maxFov = 30;
+
+    public static bool gameIsPaused = false;
 
     void Awake()
     {
         Instance = this;
         CloseCamera();
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(gameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
+    void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1;
+        gameIsPaused = false;
+    }
+
+    void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0;
+        gameIsPaused = true;
     }
 
     public void TakePicture()
@@ -39,7 +77,7 @@ public class UIManager : MonoBehaviour
             time += Time.deltaTime;
             yield return null; 
         }
-        PhotoParent.SetActive(false);
+        photoParent.SetActive(false);
     }
 
     IEnumerator CameraFlash()
@@ -50,7 +88,7 @@ public class UIManager : MonoBehaviour
 
         while (time < duration) 
         {
-            PhotoParent.SetActive(true);
+            photoParent.SetActive(true);
             time += Time.deltaTime;
             float percentComplete = time/duration;
             flashImage.color = new Color(255f, 255f, 255f, 1 - percentComplete); 

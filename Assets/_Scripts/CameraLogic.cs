@@ -36,6 +36,8 @@ public class CameraLogic : MonoBehaviour
 
     public void CameraControls()
 	{
+		if(UIManager.gameIsPaused) return;
+		
 		float zoomInput = Input.GetAxisRaw("CameraZoom");
 		UIManager.Instance.Zoom(zoomInput);
 

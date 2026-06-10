@@ -53,6 +53,8 @@ public class OrbitCamera : MonoBehaviour {
 	}
 
 	void LateUpdate () {
+		if(UIManager.gameIsPaused) return;
+
 		UpdateGravityAlignment();
 		UpdateFocusPoint();
 		if (ManualRotation()) {
