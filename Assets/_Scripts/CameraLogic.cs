@@ -6,6 +6,8 @@ public class CameraLogic : MonoBehaviour
 {
     bool picReady = true;
 	public List<Item> PhotoContents;
+	List<ItemData> PhotoContentsItemData;
+
 	public PhotoCapture _photoCapture;
 
 	Vector3 viewfinderBounds;
@@ -51,7 +53,21 @@ public class CameraLogic : MonoBehaviour
             picReady = false;
 			RaycastHit[] photoCasts = RaycastArray(20, 30);
 			PhotoContents = SortArray(photoCasts);
+			PhotoContentsItemData = ItemListToItemDataList(PhotoContents);
+			GoalManager.Instance.CheckAgainstGoals(PhotoContentsItemData);
 		}
+	}
+
+	List<ItemData> ItemListToItemDataList(List<Item> _items)
+	{
+		List<ItemData> itemDataList = new List<ItemData>();
+
+		foreach(Item _item in _items)
+		{
+			itemDataList.Add(_item.itemData);
+		}
+		
+		return itemDataList;
 	}
 
 	List<Item> SortArray(RaycastHit[] hits)

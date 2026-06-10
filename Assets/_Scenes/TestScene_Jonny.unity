@@ -367,8 +367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -259.95, y: -169.81853}
-  m_SizeDelta: {x: -519.9, y: -339.6371}
+  m_AnchoredPosition: {x: -259.94998, y: -208.60545}
+  m_SizeDelta: {x: -519.9, y: -417.2109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65671830
 MonoBehaviour:
@@ -547,7 +547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.05001831, y: -19.181442}
+  m_AnchoredPosition: {x: -0.05001831, y: -1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &207892549
@@ -2762,6 +2762,7 @@ MonoBehaviour:
   Goals:
   - {fileID: 11400000, guid: c4e555d71cf2d9548b09610eee536f4d, type: 2}
   - {fileID: 11400000, guid: 54e23a41a643d5547874f09f2a7fd0d9, type: 2}
+  FinishedGoals: []
   emptyGoalPrefab: {fileID: 2047131052853389749, guid: 6b5447692df60a146be68f933efad807, type: 3}
 --- !u!1 &1626661617
 GameObject:
@@ -3667,10 +3668,6 @@ PrefabInstance:
     - target: {fileID: 2047131052853389749, guid: 6b5447692df60a146be68f933efad807, type: 3}
       propertyPath: m_Name
       value: Goal
-      objectReference: {fileID: 0}
-    - target: {fileID: 8034733278464107778, guid: 6b5447692df60a146be68f933efad807, type: 3}
-      propertyPath: m_text
-      value: 2 Spheres
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

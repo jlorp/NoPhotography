@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A Boat
+  m_text: 2 Spheres
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286282619
-  m_fontColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+    rgba: 4289045926
+  m_fontColor: {r: 0.6509434, g: 0.6478729, b: 0.6478729, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -224,3 +224,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalText: {fileID: 8034733278464107778}
+  background: {fileID: 7754730588772612579}
