@@ -30,9 +30,12 @@ public class CameraLogic : MonoBehaviour
 		Vector3 startPosition = corners[1];
 		Vector3 endPosition = corners[3];
 
+		Debug.Log(endPosition);
+
 		viewFinderWidth = endPosition.x - startPosition.x;
 		viewfinderHeight = endPosition.y - startPosition.y;
-		viewFinderCenter = new Vector2(210,85);
+		viewFinderCenter = new Vector2(startPosition.x,endPosition.y);
+
 		viewportRect = new Rect(viewFinderCenter.x, viewFinderCenter.y, viewFinderWidth, Mathf.Abs(viewfinderHeight));
 	}
 
@@ -48,6 +51,7 @@ public class CameraLogic : MonoBehaviour
 
 		if((picReady && shutterAxis > .9f) || Input.GetButtonDown("Shutter Mouse"))
 		{
+			SetViewFinderVariables();
 			_photoCapture.TakePicture(viewportRect);
 			UIManager.Instance.TakePicture();
             picReady = false;
