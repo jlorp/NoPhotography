@@ -50,6 +50,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 0.02
+    - _BUILTIN_CullMode: 0
     - _BUILTIN_DstBlend: 0
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_SrcBlend: 1
