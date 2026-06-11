@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4503535646456489745}
   - component: {fileID: 366189035561746336}
+  - component: {fileID: 8492801286040748222}
   m_Layer: 0
   m_Name: CameraLogic
   m_TagString: Untagged
@@ -127,6 +128,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f15240efafd9d346b73e0bf49e4dddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PhotoContents: []
+  _photoCapture: {fileID: 8492801286040748222}
+  viewportRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+--- !u!114 &8492801286040748222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918256517572924787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf5ae533a7b8da4bb56e4b06b57ce5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photoDisplayArea: {fileID: 0}
 --- !u!1 &6848463318185709710
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputSpace: {fileID: 0}
-  maxSpeed: 5
+  maxSpeed: 3
   maxClimbSpeed: 4
   maxSwimSpeed: 5
   maxAcceleration: 20
