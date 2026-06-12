@@ -32,6 +32,12 @@ public class UIManager : MonoBehaviour
 
     [Header("Breath Meter")]
     public BarUI breathMeter;
+    public Image deathImage;
+
+    Transform spawnpoint;
+
+    [Header("Dependencies")]
+    public MovingSphere _player;
 
     void Awake()
     {
@@ -81,6 +87,8 @@ public class UIManager : MonoBehaviour
         StartCoroutine(CameraFlash());
     }
 
+  
+
     IEnumerator HideGameObjectAfterDelay(GameObject _tohide, float duration)
     {
         float time = 0f;
@@ -91,6 +99,43 @@ public class UIManager : MonoBehaviour
             yield return null; 
         }
         _tohide.SetActive(false);
+    }
+
+    public void BlackFade(Transform _spawnpoint)
+    {
+        StartCoroutine(DeathFlash(1f, 1, true));
+        spawnpoint = _spawnpoint;
+    }
+
+    IEnumerator DeathFlash(float duration, float targetOpacity, bool firstPhase)
+    {
+        float time = 0f;
+        float startOpacity = deathImage.color.a;
+        
+        while (time < duration) 
+        {
+            time += Time.deltaTime;
+            float percentComplete = time/duration;
+            float opacity = Mathf.Lerp(startOpacity, targetOpacity, percentComplete);
+            deathImage.color = new Color(deathImage.color.r, deathImage.color.g, deathImage.color.b, opacity); 
+            yield return null; 
+        }
+
+        deathImage.color = new Color(deathImage.color.r, deathImage.color.g, deathImage.color.b, targetOpacity);
+
+        if(firstPhase == true)
+        {
+            ResetPlayer(spawnpoint);
+            yield return new WaitForSeconds(1);
+            StartCoroutine(DeathFlash(1.5f, 0,false));
+        }
+    }
+
+    void ResetPlayer(Transform spawnpoint)
+    {
+        _player.transform.position = spawnpoint.position;
+        _player.transform.rotation = spawnpoint.rotation;
+        _player._breath.ResetBreath();
     }
 
     IEnumerator CameraFlash()

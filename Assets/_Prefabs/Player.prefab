@@ -247,7 +247,9 @@ MonoBehaviour:
   waterMask:
     serializedVersion: 2
     m_Bits: 16
+  drowning: 0
   _camera: {fileID: 366189035561746336}
+  _breath: {fileID: 2041057511679150894}
 --- !u!54 &7895083787797769783
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -287,5 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909b5a0d8db045545aff82b2c0f86704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBreathCapacity: 60
+  maxBreathCapacity: 30
   _player: {fileID: 2603974415153141308}
+  respawnPoint: {fileID: 0}

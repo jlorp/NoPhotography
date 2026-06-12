@@ -83,6 +83,10 @@ public class MovingSphere : MonoBehaviour {
 	[HideInInspector]
 	public bool Swimming => submergence >= swimThreshold;
 
+	[HideInInspector]
+	public bool drowning = false;
+
+
 	float submergence;
 
 	int jumpPhase;
@@ -94,6 +98,7 @@ public class MovingSphere : MonoBehaviour {
 	[Header("Dependencies")]
 	[SerializeField]
 	CameraLogic _camera;
+	public BreathLogic _breath;
 
 	MeshRenderer meshRenderer;
 
