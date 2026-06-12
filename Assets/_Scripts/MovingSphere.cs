@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MovingSphere : MonoBehaviour {
 
+	public bool lockInput = false;
+
 	[SerializeField]
 	Transform playerInputSpace = default;
 
@@ -137,9 +139,18 @@ public class MovingSphere : MonoBehaviour {
         	}
     	}
 	}
+	
+	public void LockInput()
+	{
+		playerInput = Vector3.zero;
+		lockInput = true;
+	}
 
-	void Update () {
+	void UpdateInputs()
+	{
 		HandleCursorLock();
+
+		if (lockInput) return;
 
 		playerInput.x = Input.GetAxisRaw("Horizontal");
 		playerInput.z = Input.GetAxisRaw("Vertical");
@@ -164,6 +175,11 @@ public class MovingSphere : MonoBehaviour {
 				CameraOpen = true;
 			}
 		}
+	}
+
+	void Update () {
+
+		UpdateInputs();
 
 		if (playerInputSpace) 
 		{

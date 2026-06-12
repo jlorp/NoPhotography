@@ -120,6 +120,7 @@ public class UIManager : MonoBehaviour
 
     public void BlackFade()
     {
+        _player.LockInput();
         StartCoroutine(DeathFlash(1f, 1, true));
     }
 
@@ -128,6 +129,11 @@ public class UIManager : MonoBehaviour
         float time = 0f;
         float startOpacity = deathImage.color.a;
         
+        if(!firstPhase)
+        {
+            _player.lockInput = false;
+        }
+
         while (time < duration) 
         {
             time += Time.deltaTime;
