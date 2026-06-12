@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: INST_Triplanar
+  m_Shader: {fileID: -6465566751694194690, guid: 282a3b5927d229443a23118285098dde, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 282a3b5927d229443a23118285098dde, type: 3}
+  m_ModifiedSerializedProperties: 2
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseColor:
+        m_Texture: {fileID: 2800000, guid: cd1ea3477a103864f82fcd00f1b2de06, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Base_Color:
+        m_Texture: {fileID: 2800000, guid: e6a7b16468d82c648b6dd3cffdd6d6d8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Top_Color:
+        m_Texture: {fileID: 2800000, guid: e6a7b16468d82c648b6dd3cffdd6d6d8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BaseColorTile: 0.05
+    - _Contrast: 24.1
+    - _FadeDistance: 79.41
+    - _LargeNoiseSize: 1
+    - _Level: 1.25
+    - _NoiseSize: 0.6
+    - _NoiseStrength: 0.91
+    - _QueueControl: 0
+    - _Sharpness: 25
+    - _SmallNoiseSize: 3
+    - _Tile: -0.17
+    - _TopColorBlend: 1
+    - _TopColorTile: 0.05
+    - _UpCutoff: 0.61
+    - _UpNode: 1
+    m_Colors:
+    - _TopColorOffset: {r: 0, g: 1.07, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &8357222675522490482
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
