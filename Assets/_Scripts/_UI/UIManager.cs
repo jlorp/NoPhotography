@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     public GameObject goalListParent;
 
     public static bool gameIsPaused = false;
+    public static bool cameraIsOpen = false;
 
     [Header("Popup")]
     public GameObject popupUiTransform;
@@ -111,7 +112,7 @@ public class UIManager : MonoBehaviour
     {
         if(inOut == 0) return;
 
-        float zoomspeed = 20;
+        float zoomspeed = 20 * Mathf.Abs(inOut);
         float targetFov = Mathf.Sign(inOut) > 0 ? minFov : maxFov;
         Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, targetFov, zoomspeed * Time.deltaTime);
     }
@@ -120,11 +121,13 @@ public class UIManager : MonoBehaviour
     {
         cameraUIParent.SetActive(true);
         Camera.main.fieldOfView = maxFov;
+        cameraIsOpen = true;
     }
 
     public void CloseCamera()
     {
         cameraUIParent.SetActive(false);
         Camera.main.fieldOfView = 60;
+        cameraIsOpen = false;
     }
 }

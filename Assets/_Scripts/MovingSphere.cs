@@ -110,10 +110,31 @@ public class MovingSphere : MonoBehaviour {
 		body.useGravity = false;
 		OnValidate();
 		CameraOpen = false;
+
+		Cursor.lockState = CursorLockMode.Locked;
+    	Cursor.visible = false;
 	}
 
+	void HandleCursorLock()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+    	{
+        	if (Cursor.lockState == CursorLockMode.Locked)
+        	{
+            	Cursor.lockState = CursorLockMode.None;
+            	Cursor.visible = true;
+        	}
+        	else
+        	{
+            	Cursor.lockState = CursorLockMode.Locked;
+            	Cursor.visible = false;
+        	}
+    	}
+	}
 
 	void Update () {
+		HandleCursorLock();
+
 		playerInput.x = Input.GetAxisRaw("Horizontal");
 		playerInput.z = Input.GetAxisRaw("Vertical");
 		playerInput.y = Swimming ? Input.GetAxisRaw("UpDown") : 0f;

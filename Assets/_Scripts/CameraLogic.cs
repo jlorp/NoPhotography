@@ -44,6 +44,9 @@ public class CameraLogic : MonoBehaviour
 		float zoomInput = Input.GetAxisRaw("CameraZoom");
 		UIManager.Instance.Zoom(zoomInput);
 
+		float zoomInputMouse = Input.GetAxisRaw("CameraZoomMouse");
+		UIManager.Instance.Zoom(zoomInputMouse * 30);
+
         float shutterAxis = Input.GetAxisRaw("Shutter");
         picReady |= shutterAxis < .1f;
 

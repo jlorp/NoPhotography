@@ -22,7 +22,7 @@ public class OrbitCamera : MonoBehaviour {
 
 	Vector3 focusPoint, previousFocusPoint;
 
-	Vector2 orbitAngles = new Vector2(45f, 0f);
+	Vector3 orbitAngles = new Vector2(45f, 0f);
 
 	Quaternion gravityAlignment = Quaternion.identity;
 
@@ -110,12 +110,14 @@ public class OrbitCamera : MonoBehaviour {
 	}
 
 	bool ManualRotation () {
-		Vector2 input = new Vector2(
+		Vector3 input = new Vector3(
 			Input.GetAxis("Vertical Camera"),
-			Input.GetAxis("Horizontal Camera")
+			Input.GetAxis("Horizontal Camera"),
+			-Input.GetAxisRaw("Tilt") * .5f
 		);
+
 		const float e = 0.001f;
-		if (input.x < -e || input.x > e || input.y < -e || input.y > e) {
+		if (input.x < -e || input.x > e || input.y < -e || input.y > e || input.z > e || input.z < -e) {
 			orbitAngles += rotationSpeed * Time.unscaledDeltaTime * input;
 			return true;
 		}
@@ -132,6 +134,9 @@ public class OrbitCamera : MonoBehaviour {
 		else if (orbitAngles.y >= 360f) {
 			orbitAngles.y -= 360f;
 		}
+
+		orbitAngles.z = Mathf.Clamp(orbitAngles.z, -45,45);
+		if(!UIManager.cameraIsOpen) orbitAngles.z=0;
 	}
 
 	static float GetAngle (Vector2 direction) {
