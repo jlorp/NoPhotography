@@ -6,6 +6,6 @@ using System.Collections;
 public class GoalData : ScriptableObject
 {
     public string GoalName;
-
     public List<ItemData> RequiredPhotoContents;
+    public float cashReward;
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b051db05aa4c4154ca190e5e7039523a, type: 2}
   - {fileID: 11400000, guid: b051db05aa4c4154ca190e5e7039523a, type: 2}
   - {fileID: 11400000, guid: b051db05aa4c4154ca190e5e7039523a, type: 2}
+  cashReward: 0.67

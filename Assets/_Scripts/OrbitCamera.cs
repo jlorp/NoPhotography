@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class OrbitCamera : MonoBehaviour {
 
+	public static OrbitCamera Instance;
+
 	[SerializeField]
 	Transform focus = default;
 
@@ -27,6 +29,12 @@ public class OrbitCamera : MonoBehaviour {
 	Quaternion gravityAlignment = Quaternion.identity;
 
 	Quaternion orbitRotation;
+	bool desiresFlatTilt;
+
+	void Start()
+	{
+		Instance = this;
+	}
 
 	Vector3 CameraHalfExtends {
 		get {
@@ -44,6 +52,11 @@ public class OrbitCamera : MonoBehaviour {
 		if (maxVerticalAngle < minVerticalAngle) {
 			maxVerticalAngle = minVerticalAngle;
 		}
+	}
+
+	public void ForceFlattenTilt()
+	{
+		desiresFlatTilt=true;
 	}
 
 	void Awake () {
@@ -117,8 +130,13 @@ public class OrbitCamera : MonoBehaviour {
 		);
 
 		const float e = 0.001f;
-		if (input.x < -e || input.x > e || input.y < -e || input.y > e || input.z > e || input.z < -e) {
+		if (input.x < -e || input.x > e || input.y < -e || input.y > e || input.z > e || input.z < -e || desiresFlatTilt) {
 			orbitAngles += rotationSpeed * Time.unscaledDeltaTime * input;
+			if(desiresFlatTilt)
+			{
+				orbitAngles.z = 0;	
+				desiresFlatTilt = false;
+			}
 			return true;
 		}
 		return false;

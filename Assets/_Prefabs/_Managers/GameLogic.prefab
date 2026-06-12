@@ -86,6 +86,10 @@ PrefabInstance:
       value: Managers
       objectReference: {fileID: 0}
     - target: {fileID: 8919939502673052007, guid: 4418366b91d7b744297e90d1b6baab99, type: 3}
+      propertyPath: cashUI
+      value: 
+      objectReference: {fileID: 1457755672860570311}
+    - target: {fileID: 8919939502673052007, guid: 4418366b91d7b744297e90d1b6baab99, type: 3}
       propertyPath: _popupUI
       value: 
       objectReference: {fileID: 9088905439193110593}
@@ -242,6 +246,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7832539886682733531, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
   m_PrefabInstance: {fileID: 9078357092735339384}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1457755672860570311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7621832894440896959, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+  m_PrefabInstance: {fileID: 9078357092735339384}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ba3cfa5d75a5bf40abc81817f61871e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2498819427476721769 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6868370595394558737, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}

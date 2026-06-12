@@ -77,6 +77,7 @@ public class GoalManager : MonoBehaviour
                 if (_ui.relevantGoal == finishedGoal)
                 {
                     _ui.CompleteGoal();
+                    Wallet.Instance.AddCash(finishedGoal.cashReward);
                 }
             }
         }

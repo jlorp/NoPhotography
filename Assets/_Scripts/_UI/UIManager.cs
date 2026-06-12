@@ -36,13 +36,15 @@ public class UIManager : MonoBehaviour
 
     Transform spawnpoint;
 
+    [Header("Wallet")]
+    public CashUI cashUI;
+
     [Header("Dependencies")]
     public MovingSphere _player;
 
     void Awake()
     {
         Instance = this;
-        CloseCamera();
     }
 
     void Update()
@@ -74,6 +76,11 @@ public class UIManager : MonoBehaviour
         gameIsPaused = true;
     }
 
+    public void UpdateWallet(float walletAmount)
+    {
+        cashUI.UpdateWallet(walletAmount);
+    }
+
     public void Popup(string newtext)
     {
         popupUiTransform.SetActive(true);
@@ -81,13 +88,10 @@ public class UIManager : MonoBehaviour
         StartCoroutine(HideGameObjectAfterDelay(popupUiTransform,2f));
     }
 
-
     public void TakePicture()
     {
         StartCoroutine(CameraFlash());
     }
-
-  
 
     IEnumerator HideGameObjectAfterDelay(GameObject _tohide, float duration)
     {
@@ -174,6 +178,7 @@ public class UIManager : MonoBehaviour
 
     public void CloseCamera()
     {
+        OrbitCamera.Instance.ForceFlattenTilt();
         cameraUIParent.SetActive(false);
         Camera.main.fieldOfView = 60;
         cameraIsOpen = false;

@@ -16,3 +16,4 @@ MonoBehaviour:
   RequiredPhotoContents:
   - {fileID: 11400000, guid: b11bd14c7db21944aad855c55bae8fab, type: 2}
   - {fileID: 11400000, guid: b11bd14c7db21944aad855c55bae8fab, type: 2}
+  cashReward: 0.67
