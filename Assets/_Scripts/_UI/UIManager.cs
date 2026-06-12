@@ -34,13 +34,16 @@ public class UIManager : MonoBehaviour
     public BarUI breathMeter;
     public Image deathImage;
 
-    Transform spawnpoint;
+    public Transform spawnpoint;
 
     [Header("Wallet")]
     public CashUI cashUI;
 
     [Header("Dependencies")]
     public MovingSphere _player;
+
+    [Header("InteractionsPrompt")]
+    public InteractPromptUI _interactPrompt;
 
     void Awake()
     {
@@ -67,6 +70,16 @@ public class UIManager : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
         gameIsPaused = false;
+    }
+
+    public void AddInteractPrompt(string _text)
+    {
+        _interactPrompt.AddPrompt(_text);
+    }
+
+    public void RemoveInteractPrompt()
+    {
+        _interactPrompt.RemovePrompt();
     }
 
     void Pause()
@@ -105,10 +118,9 @@ public class UIManager : MonoBehaviour
         _tohide.SetActive(false);
     }
 
-    public void BlackFade(Transform _spawnpoint)
+    public void BlackFade()
     {
         StartCoroutine(DeathFlash(1f, 1, true));
-        spawnpoint = _spawnpoint;
     }
 
     IEnumerator DeathFlash(float duration, float targetOpacity, bool firstPhase)
@@ -129,16 +141,16 @@ public class UIManager : MonoBehaviour
 
         if(firstPhase == true)
         {
-            ResetPlayer(spawnpoint);
+            ResetPlayer();
             yield return new WaitForSeconds(1);
             StartCoroutine(DeathFlash(1.5f, 0,false));
         }
     }
 
-    void ResetPlayer(Transform spawnpoint)
+    public void ResetPlayer()
     {
         _player.transform.position = spawnpoint.position;
-        _player.transform.rotation = spawnpoint.rotation;
+        OrbitCamera.Instance.transform.rotation = spawnpoint.rotation;
         _player._breath.ResetBreath();
     }
 

@@ -8,7 +8,6 @@ public class BreathLogic : MonoBehaviour
 
     public float maxBreathCapacity;
     public MovingSphere _player;
-    public Transform respawnPoint;
 
     void Start()
     {
@@ -35,7 +34,7 @@ public class BreathLogic : MonoBehaviour
     void Die()
     {
         _player.drowning = true;
-        UIManager.Instance.BlackFade(respawnPoint);
+        UIManager.Instance.BlackFade();
     }
 
     public void ResetBreath()
