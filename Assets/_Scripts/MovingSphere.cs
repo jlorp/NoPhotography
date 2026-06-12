@@ -80,7 +80,8 @@ public class MovingSphere : MonoBehaviour {
 
 	bool InWater => submergence > 0f;
 
-	bool Swimming => submergence >= swimThreshold;
+	[HideInInspector]
+	public bool Swimming => submergence >= swimThreshold;
 
 	float submergence;
 

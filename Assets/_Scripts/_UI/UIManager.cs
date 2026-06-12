@@ -30,6 +30,9 @@ public class UIManager : MonoBehaviour
     public GameObject popupUiTransform;
     public PopupUI _popupUI;
 
+    [Header("Breath Meter")]
+    public BarUI breathMeter;
+
     void Awake()
     {
         Instance = this;
