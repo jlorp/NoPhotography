@@ -7,6 +7,9 @@ public class MovingSphere : MonoBehaviour {
 	[SerializeField]
 	Transform playerInputSpace = default;
 
+	[SerializeField]
+	public Transform submarine;
+
 	[SerializeField, Range(0f, 100f)]
 	float maxSpeed = 10f, maxClimbSpeed = 4f, maxSwimSpeed = 5f;
 
@@ -19,6 +22,9 @@ public class MovingSphere : MonoBehaviour {
 
 	[SerializeField, Range(0f, 10f)]
 	float jumpHeight = 2f;
+
+	[SerializeField, Range(0f, 30f)]
+	float swimRotation = 2f;
 
 	[SerializeField, Range(0, 5)]
 	int maxAirJumps = 0;
@@ -56,7 +62,8 @@ public class MovingSphere : MonoBehaviour {
 
 	Rigidbody body, connectedBody, previousConnectedBody;
 
-	Vector3 playerInput;
+	[HideInInspector]
+	public Vector3 playerInput;
 
 	Vector3 velocity, connectionVelocity;
 
@@ -152,15 +159,24 @@ public class MovingSphere : MonoBehaviour {
 
 		if (lockInput) return;
 
+		//playerInput.x = Input.GetAxisRaw("Horizontal");
+		//playerInput.z = Input.GetAxisRaw("Vertical");
+		//playerInput.y = Swimming ? Input.GetAxisRaw("UpDown") : 0f;
+
 		playerInput.x = Input.GetAxisRaw("Horizontal");
-		playerInput.z = Input.GetAxisRaw("Vertical");
-		playerInput.y = Swimming ? Input.GetAxisRaw("UpDown") : 0f;
-		playerInput = Vector3.ClampMagnitude(playerInput, 1f);
+		playerInput.z = Input.GetAxisRaw("Shutter");
+		if(Input.GetButton("Shutter Mouse")) playerInput.z = 1;
+		playerInput.y = Input.GetAxisRaw("Vertical");
+
+		//playerInput = Vector3.ClampMagnitude(playerInput, 1f);
+
 
 		if(CameraOpen)
 		{
 			_camera.CameraControls();
 		}
+
+		
 
 		if(Input.GetButtonDown("Open Camera"))
 		{
@@ -196,8 +212,10 @@ public class MovingSphere : MonoBehaviour {
 		if (Swimming) 
 		{
 			desiresClimbing = false;
-			rightAxis=  Camera.main.transform.right;
-			forwardAxis = Camera.main.transform.forward;
+			//rightAxis=  Camera.main.transform.right;
+			//forwardAxis = Camera.main.transform.forward;
+			forwardAxis = submarine.forward;
+			rightAxis = submarine.right;
 		}
 		else 
 		{
@@ -382,12 +400,20 @@ public class MovingSphere : MonoBehaviour {
 		Vector3 zAxis = forwardAxis;
 		Vector3 relativeVelocity = velocity - connectionVelocity;
 
-		Vector3 playerInputLocal = zAxis * playerInput.z + xAxis * playerInput.x + Vector3.up * playerInput.y;
+		Vector3 playerInputLocal = zAxis * playerInput.z;
 		playerInputLocal = Vector3.ClampMagnitude(playerInputLocal, 1);
+		float inputAdjustment = 1;
+		if(playerInput.z == 0) inputAdjustment = 0.05f;
+
+		transform.Rotate(Vector3.up, playerInput.x * swimRotation * 10 * Time.deltaTime);
+		transform.Rotate(Vector3.right, playerInput.y * swimRotation * 10 * Time.deltaTime);
+
+		var rotation = transform.eulerAngles;
+		float xLerp = Mathf.LerpAngle(rotation.z, 0, Time.deltaTime * 10f);
+		transform.eulerAngles = new Vector3(rotation.x, rotation.y, xLerp);
 
 		Vector3 targetSpeed = playerInputLocal * maxSwimSpeed;
-
-		velocity = Vector3.MoveTowards(velocity, targetSpeed, acceleration * Time.deltaTime); 
+		velocity = Vector3.MoveTowards(velocity, targetSpeed, acceleration * Time.deltaTime * inputAdjustment); 
 	}
 
 	void AdjustVelocity () {

@@ -8,6 +8,9 @@ public class OrbitCamera : MonoBehaviour {
 	[SerializeField]
 	Transform focus = default;
 
+	[SerializeField, Range (0f ,10f)]
+	public float distance;
+
 	[SerializeField, Range(1f, 360f)]
 	float rotationSpeed = 90f;
 
@@ -34,6 +37,7 @@ public class OrbitCamera : MonoBehaviour {
 	void Start()
 	{
 		Instance = this;
+		distance = 4;
 	}
 
 	Vector3 CameraHalfExtends {
@@ -77,7 +81,9 @@ public class OrbitCamera : MonoBehaviour {
 		Quaternion lookRotation = gravityAlignment * orbitRotation;
 
 		Vector3 lookDirection = lookRotation * Vector3.forward;
-		Vector3 lookPosition = focusPoint;
+		//Vector3 cameraOffsetVector = (transform.up * cameraOffset.y) + (transform.right * cameraOffset.x);
+		Vector3 lookPosition = focusPoint - lookDirection * distance;
+
 
 		Vector3 rectOffset = lookDirection * regularCamera.nearClipPlane;
 		Vector3 rectPosition = lookPosition + rectOffset;
