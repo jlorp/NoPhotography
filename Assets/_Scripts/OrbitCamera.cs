@@ -34,10 +34,29 @@ public class OrbitCamera : MonoBehaviour {
 	Quaternion orbitRotation;
 	bool desiresFlatTilt;
 
+	bool isActivated = false;
+	Quaternion rotationOnActivate;
+	Vector3 positionOnActivate; 
+	float percentActive=0;
+
 	void Start()
 	{
 		Instance = this;
-		distance = 4;
+	}
+
+	void Awake () {
+		regularCamera = GetComponent<Camera>();
+		focusPoint = focus.position;
+		//transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);
+	}
+
+	public void LerpToActivation()
+	{
+		orbitAngles = new Vector3 (0,90,0);
+		rotationOnActivate = transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);
+		
+		positionOnActivate = transform.position;
+		isActivated = true;
 	}
 
 	Vector3 CameraHalfExtends {
@@ -63,14 +82,10 @@ public class OrbitCamera : MonoBehaviour {
 		desiresFlatTilt=true;
 	}
 
-	void Awake () {
-		regularCamera = GetComponent<Camera>();
-		focusPoint = focus.position;
-		transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);
-	}
-
 	void LateUpdate () {
+
 		if(UIManager.gameIsPaused) return;
+		if(!isActivated) return;
 
 		UpdateGravityAlignment();
 		UpdateFocusPoint();
@@ -81,7 +96,6 @@ public class OrbitCamera : MonoBehaviour {
 		Quaternion lookRotation = gravityAlignment * orbitRotation;
 
 		Vector3 lookDirection = lookRotation * Vector3.forward;
-		//Vector3 cameraOffsetVector = (transform.up * cameraOffset.y) + (transform.right * cameraOffset.x);
 		Vector3 lookPosition = focusPoint - lookDirection * distance;
 
 

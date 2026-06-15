@@ -7,6 +7,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    [Header("Start Menu")]
+    public GameObject startMenuParent;
+
     [Header("Camera Menu")]
 
     public GameObject cameraUIParent;
@@ -33,6 +36,7 @@ public class UIManager : MonoBehaviour
     [Header("Breath Meter")]
     public BarUI breathMeter;
     public Image deathImage;
+    public GameObject breathParent;
 
     public Transform spawnpoint;
 
@@ -45,13 +49,30 @@ public class UIManager : MonoBehaviour
     [Header("InteractionsPrompt")]
     public InteractPromptUI _interactPrompt;
 
+    bool inStartMenu = true;
+
     void Awake()
     {
         Instance = this;
     }
 
+    public void CloseStartMenu()
+    {
+        inStartMenu = false;
+        startMenuParent.SetActive(false);
+        breathParent.SetActive(true);
+    }
+
+    void Start()
+    {
+        breathParent.SetActive(false);
+        StartCoroutine(DeathFlash(1.5f, 0,false,1));
+    }
+
     void Update()
     {
+        if(inStartMenu) return;
+
         if(Input.GetButtonDown("Pause"))
         {
             if(gameIsPaused)
@@ -124,10 +145,12 @@ public class UIManager : MonoBehaviour
         StartCoroutine(DeathFlash(1f, 1, true));
     }
 
-    IEnumerator DeathFlash(float duration, float targetOpacity, bool firstPhase)
+    IEnumerator DeathFlash(float duration, float targetOpacity, bool firstPhase, float startDelay = 0)
     {
         float time = 0f;
-        float startOpacity = deathImage.color.a;
+        float startOpacity = 1-targetOpacity;
+        deathImage.color = new Color(deathImage.color.r, deathImage.color.g, deathImage.color.b, startOpacity); 
+        yield return new WaitForSeconds(startDelay);
         
         if(!firstPhase)
         {
@@ -189,6 +212,8 @@ public class UIManager : MonoBehaviour
 
     public void OpenCamera()
     {
+        if(inStartMenu) return;
+
         cameraUIParent.SetActive(true);
         Camera.main.fieldOfView = maxFov;
         cameraIsOpen = true;

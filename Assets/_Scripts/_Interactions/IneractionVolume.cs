@@ -11,7 +11,7 @@ public class IneractionVolume : MonoBehaviour
         if (other.TryGetComponent<MovingSphere>(out MovingSphere _player))
         {
             isActive = true;
-            UIManager.Instance.AddInteractPrompt("Jump to Get in Boat");
+            UIManager.Instance.AddInteractPrompt("Press Action to Dock");
         }
     }
 

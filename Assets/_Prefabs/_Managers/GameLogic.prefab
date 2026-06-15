@@ -126,6 +126,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 530084049816530404}
     - target: {fileID: 8919939502673052007, guid: 4418366b91d7b744297e90d1b6baab99, type: 3}
+      propertyPath: startMenuParent
+      value: 
+      objectReference: {fileID: 1100351530038100785}
+    - target: {fileID: 8919939502673052007, guid: 4418366b91d7b744297e90d1b6baab99, type: 3}
       propertyPath: popupUiTransform
       value: 
       objectReference: {fileID: 5484049192603668739}
@@ -235,6 +239,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8425372273213089469, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8425372273213089469, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8425372273213089469, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8425372273213089469, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -254,6 +274,11 @@ MonoBehaviour:
 --- !u!1 &854036822789079905 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8513747619368994841, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+  m_PrefabInstance: {fileID: 9078357092735339384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1100351530038100785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8266909413455546441, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
   m_PrefabInstance: {fileID: 9078357092735339384}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1246943125363896483 stripped
