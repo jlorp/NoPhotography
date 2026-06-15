@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: INST_Fish
+  m_Name: INST_Kelp
   m_Shader: {fileID: -6465566751694194690, guid: d6fd146dd6c689f4e98d1d3ffaddf84e, type: 3}
   m_Parent: {fileID: -876546973899608171, guid: d6fd146dd6c689f4e98d1d3ffaddf84e, type: 3}
   m_ModifiedSerializedProperties: 2
@@ -24,14 +24,28 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _Alpha:
+        m_Texture: {fileID: 2800000, guid: 822f18de91db78d4d9ac2248766de698, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseColor:
+        m_Texture: {fileID: 2800000, guid: 822f18de91db78d4d9ac2248766de698, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 1
-    - _Frequency: 0.1
+    - _Amplitude: 0.8
+    - _Cull: 0
+    - _Frequency: 50
+    - _GlobalWindSize: 50
+    - _InvertVertexColorMask: 1
+    - _Offset: 0
     - _QueueControl: 0
-    - _Speed: 2
-    m_Colors: []
+    - _Speed: 1
+    - _Use_Global_Wind: 0
+    m_Colors:
+    - _Offset: {r: 0.51, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6323721467624085702
 MonoBehaviour:
