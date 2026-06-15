@@ -52,5 +52,10 @@ public class BreathLogic : MonoBehaviour
         forceMagnitude = Mathf.Clamp(forceMagnitude, 0.75f , 3);
         _player.body.AddForce( hitNormal * forceMagnitude * 2, ForceMode.Impulse);
         breathRemaining -= forceMagnitude * 1.33f;
+
+        if(breathRemaining <= 0)
+        {
+            Die();
+        }
     }
 }
