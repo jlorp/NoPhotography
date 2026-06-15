@@ -86,17 +86,18 @@ public class GoalManager : MonoBehaviour
         }
     }
 
-    void HoldGoal(GoalData heldGoal)
-    {
-        Goals.Remove(heldGoal);
-        HeldGoals.Add(heldGoal);
-        UIManager.Instance.Popup("Goal Held: " + heldGoal.GoalName);
-    }
-
     void FailGoal(GoalData failedGoal)
     {
         Goals.Add(failedGoal);
         AdjustGoal(failedGoal, 0);
+        UIManager.Instance.Popup("Goal Failed: " + failedGoal.GoalName, 0);
+    }
+
+    void HoldGoal(GoalData heldGoal)
+    {
+        Goals.Remove(heldGoal);
+        HeldGoals.Add(heldGoal);
+        UIManager.Instance.Popup("Goal Held: " + heldGoal.GoalName, 1);
     }
 
     void CompleteGoal(GoalData finishedGoal)
@@ -105,7 +106,7 @@ public class GoalManager : MonoBehaviour
 
         FinishedGoals.Add(finishedGoal);
         
-        UIManager.Instance.Popup("Goal Complete: " + finishedGoal.GoalName);
+        UIManager.Instance.Popup("Goal Complete: " + finishedGoal.GoalName, 2);
         AdjustGoal(finishedGoal, 2);
     }
 

@@ -48,8 +48,16 @@ PrefabInstance:
       value: UIManager
       objectReference: {fileID: 0}
     - target: {fileID: 3012405145696253262, guid: 1e2a19f84b9690e459620f8ec1131e88, type: 3}
-      propertyPath: skipStartup
-      value: 1
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012405145696253262, guid: 1e2a19f84b9690e459620f8ec1131e88, type: 3}
+      propertyPath: cashParent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012405145696253262, guid: 1e2a19f84b9690e459620f8ec1131e88, type: 3}
+      propertyPath: spawnpoint
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8053083806126009752, guid: 1e2a19f84b9690e459620f8ec1131e88, type: 3}
       propertyPath: m_LocalPosition.x

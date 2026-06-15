@@ -37,8 +37,8 @@ public class OrbitCamera : MonoBehaviour {
 	public Transform resetPosition;
 
 
-	
-	bool isActivated = false;
+	[HideInInspector]
+	public bool isActivated = false;
 
 	void Awake () {
 		Instance = this;

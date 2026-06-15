@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185d0f887f91ec84bb70f2e2be872a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipStartup: 0
+  startMenuParent: {fileID: 0}
   cameraUIParent: {fileID: 0}
   flashImage: {fileID: 0}
   viewfinderBounds: {fileID: 0}
@@ -54,3 +56,11 @@ MonoBehaviour:
   goalListParent: {fileID: 0}
   popupUiTransform: {fileID: 0}
   _popupUI: {fileID: 0}
+  breathMeter: {fileID: 0}
+  deathImage: {fileID: 0}
+  breathParent: {fileID: 0}
+  spawnpoint: {fileID: 0}
+  cashUI: {fileID: 0}
+  cashParent: {fileID: 0}
+  _player: {fileID: 0}
+  _interactPrompt: {fileID: 0}

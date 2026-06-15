@@ -38,7 +38,11 @@ public class ClawLogic : MonoBehaviour
     void ReturnGoals()
     {
         GoalManager.Instance.ReturnGoals();
-        UIManager.Instance.ResetPlayer();
+    }
+
+    void ResetPlayer()
+    {
+        UIManager.Instance.ResetPlayer();   
     }
 
     void UnparentSub()
@@ -58,6 +62,8 @@ public class ClawLogic : MonoBehaviour
 
     void ActivateCamera()
     {
+        if(OrbitCamera.Instance.isActivated) return;
+
         OrbitCamera.Instance.LerpToActivation();
         UIManager.Instance.CloseStartMenu();
     }

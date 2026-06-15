@@ -94,6 +94,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9088905439193110593}
     - target: {fileID: 8919939502673052007, guid: 4418366b91d7b744297e90d1b6baab99, type: 3}
+      propertyPath: cashParent
+      value: 
+      objectReference: {fileID: 4993813266416022124}
+    - target: {fileID: 8919939502673052007, guid: 4418366b91d7b744297e90d1b6baab99, type: 3}
       propertyPath: deathImage
       value: 
       objectReference: {fileID: 4547694501695818075}
@@ -295,7 +299,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7621832894440896959, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
   m_PrefabInstance: {fileID: 9078357092735339384}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4993813266416022124}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ba3cfa5d75a5bf40abc81817f61871e, type: 3}
@@ -322,6 +326,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4993813266416022124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4085146496243038484, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+  m_PrefabInstance: {fileID: 9078357092735339384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5484049192603668739 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3595996769563679355, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}

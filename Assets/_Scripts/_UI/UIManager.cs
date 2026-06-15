@@ -136,11 +136,11 @@ public class UIManager : MonoBehaviour
         cashUI.UpdateWallet(walletAmount);
     }
 
-    public void Popup(string newtext)
+    public void Popup(string newtext, int _color)
     {
         popupUiTransform.SetActive(true);
-        _popupUI.UpdatePopupText(newtext);
-        StartCoroutine(HideGameObjectAfterDelay(popupUiTransform,2f));
+        _popupUI.UpdatePopupText(newtext, _color);
+        StartCoroutine(HideGameObjectAfterDelay(popupUiTransform,3f));
     }
 
     public void TakePicture()
