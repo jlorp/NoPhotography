@@ -44,6 +44,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Wallet")]
     public CashUI cashUI;
+    public GameObject cashParent;
 
     [Header("Dependencies")]
     public MovingSphere _player;
@@ -63,6 +64,7 @@ public class UIManager : MonoBehaviour
         inStartMenu = false;
         startMenuParent.SetActive(false);
         breathParent.SetActive(true);
+        cashParent.SetActive(true);
         CloseCamera();
     }
 
@@ -76,10 +78,13 @@ public class UIManager : MonoBehaviour
             _player.body.isKinematic = false;
             ResetPlayer();
             StartCoroutine(DeathFlash(0.5f, 0,false, 0.25f));
+            _player.isHeldByClaw = false;
         }
         else
         {
+            _player.isHeldByClaw = true;
             breathParent.SetActive(false);
+            cashParent.SetActive(false);
             StartCoroutine(DeathFlash(1.5f, 0,false, 0.25f));
         }
     }
@@ -197,11 +202,11 @@ public class UIManager : MonoBehaviour
 
     public void ResetPlayer()
     {
-
         _player.transform.SetParent(spawnpoint);
         _player.transform.localPosition = Vector3.zero;
         _player.transform.localRotation = Quaternion.Euler(new Vector3(0,180,0));
         _player.body.isKinematic = true;
+        _player.isHeldByClaw = true;
 
         ClawLogic.Instance.DropClaw();
         _player._breath.ResetBreath();

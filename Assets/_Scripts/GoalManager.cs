@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoalManager : MonoBehaviour
 {
     public List<GoalData> Goals;
+    public List<GoalData> HeldGoals;
     public List<GoalData> FinishedGoals;
     public static GoalManager Instance;
 
@@ -21,6 +22,30 @@ public class GoalManager : MonoBehaviour
         PopulateGoalsList();
     }
 
+    public void ReturnGoals()
+    {
+        List <GoalData> _localHeldGoals = HeldGoals;
+
+        foreach(GoalData goal in _localHeldGoals)
+        {
+            CompleteGoal(goal);
+        }
+
+        HeldGoals = new List<GoalData>();
+    }
+
+    public void FailGoals()
+    {
+        List <GoalData> _localHeldGoals = HeldGoals;
+
+        foreach(GoalData goal in _localHeldGoals)
+        {
+            FailGoal(goal);
+        }
+
+        HeldGoals = new List<GoalData>();
+    }
+
     public void CheckAgainstGoals(List<ItemData> photoContents)
     {
         List<GoalData> finishedGoals = new List<GoalData>();
@@ -35,7 +60,7 @@ public class GoalManager : MonoBehaviour
 
         foreach(GoalData _finishedGoal in finishedGoals)
         {
-            CompleteGoal(_finishedGoal);
+            HoldGoal(_finishedGoal);
         }
     }
 
@@ -61,12 +86,34 @@ public class GoalManager : MonoBehaviour
         }
     }
 
+    void HoldGoal(GoalData heldGoal)
+    {
+        Goals.Remove(heldGoal);
+        HeldGoals.Add(heldGoal);
+        UIManager.Instance.Popup("Goal Held: " + heldGoal.GoalName);
+    }
+
+    void FailGoal(GoalData failedGoal)
+    {
+        Goals.Add(failedGoal);
+        AdjustGoal(failedGoal, 0);
+    }
+
     void CompleteGoal(GoalData finishedGoal)
     {
-        Goals.Remove(finishedGoal);
+        if(FinishedGoals.Contains(finishedGoal)) return;
+
         FinishedGoals.Add(finishedGoal);
         
         UIManager.Instance.Popup("Goal Complete: " + finishedGoal.GoalName);
+        AdjustGoal(finishedGoal, 2);
+    }
+
+    void AdjustGoal(GoalData _goal, int _status)
+    {
+        //int 0 = incomplete
+        //int 1 = held
+        //int 2 = complete
 
         Transform goalParent = UIManager.Instance.goalListParent.transform;
 
@@ -74,10 +121,17 @@ public class GoalManager : MonoBehaviour
         {
             if (child.TryGetComponent<GoalUI>(out GoalUI _ui))
             {
-                if (_ui.relevantGoal == finishedGoal)
+                if (_ui.relevantGoal == _goal)
                 {
-                    _ui.CompleteGoal();
-                    Wallet.Instance.AddCash(finishedGoal.cashReward);
+                    if (_status == 2)
+                    {
+                        _ui.CompleteGoal();
+                        Wallet.Instance.AddCash(_goal.cashReward);   
+                    }
+                    if(_status == 0)
+                    {
+
+                    }
                 }
             }
         }

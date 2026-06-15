@@ -6,6 +6,7 @@ public class ClawLogic : MonoBehaviour
 {
     public Transform _player; 
     public Rigidbody rb;
+    public MovingSphere _playerLogic;
 
     public Transform _playerParent;
     public Animation _animaiton;
@@ -34,10 +35,17 @@ public class ClawLogic : MonoBehaviour
         _player.transform.localPosition = Vector3.zero;
     }
 
+    void ReturnGoals()
+    {
+        GoalManager.Instance.ReturnGoals();
+        UIManager.Instance.ResetPlayer();
+    }
+
     void UnparentSub()
     {
         _player.SetParent(null);
         rb.isKinematic = false;
+        _playerLogic.isHeldByClaw = false;
     }
 
     void ParentSub()
@@ -45,6 +53,7 @@ public class ClawLogic : MonoBehaviour
         _player.SetParent(_playerParent);
         _player.localPosition = Vector3.zero;
         rb.isKinematic = true;
+        _playerLogic.isHeldByClaw = true;
     }
 
     void ActivateCamera()

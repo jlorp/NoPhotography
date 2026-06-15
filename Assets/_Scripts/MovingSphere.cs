@@ -110,7 +110,8 @@ public class MovingSphere : MonoBehaviour {
 	public BreathLogic _breath;
 
 	MeshRenderer meshRenderer;
-
+	public bool isHeldByClaw;
+	
 	public void PreventSnapToGround () {
 		stepsSinceLastJump = -1;
 	}
@@ -229,7 +230,7 @@ public class MovingSphere : MonoBehaviour {
 	void FixedUpdate () {
 		if(body.isKinematic)
 		{
-			transform.localPosition= Vector3.zero;
+			if(isHeldByClaw) {transform.localPosition= Vector3.zero;}
 			return;
 		} 
 

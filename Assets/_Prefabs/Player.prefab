@@ -200,6 +200,9 @@ MonoBehaviour:
   waterMask:
     serializedVersion: 2
     m_Bits: 16
+  body: {fileID: 0}
+  connectedBody: {fileID: 0}
+  previousConnectedBody: {fileID: 0}
   playerInput: {x: 0, y: 0, z: 0}
   drowning: 0
   _camera: {fileID: 366189035561746336}

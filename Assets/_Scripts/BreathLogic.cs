@@ -35,6 +35,7 @@ public class BreathLogic : MonoBehaviour
     {
         _player.drowning = true;
         UIManager.Instance.BlackFade();
+        GoalManager.Instance.FailGoals();
     }
 
     public void ResetBreath()
