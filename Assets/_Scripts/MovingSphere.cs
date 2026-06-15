@@ -59,8 +59,8 @@ public class MovingSphere : MonoBehaviour {
 	[SerializeField]
 	LayerMask probeMask = -1, climbMask = -1, waterMask = 0;
 
-
-	Rigidbody body, connectedBody, previousConnectedBody;
+	[HideInInspector]
+	public Rigidbody body, connectedBody, previousConnectedBody;
 
 	[HideInInspector]
 	public Vector3 playerInput;

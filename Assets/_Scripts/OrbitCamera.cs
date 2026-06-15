@@ -39,12 +39,8 @@ public class OrbitCamera : MonoBehaviour {
 	Vector3 positionOnActivate; 
 	float percentActive=0;
 
-	void Start()
-	{
-		Instance = this;
-	}
-
 	void Awake () {
+		Instance = this;
 		regularCamera = GetComponent<Camera>();
 		focusPoint = focus.position;
 		//transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);

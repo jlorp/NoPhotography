@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    public bool skipStartup;
+
     [Header("Start Menu")]
     public GameObject startMenuParent;
 
@@ -61,12 +63,25 @@ public class UIManager : MonoBehaviour
         inStartMenu = false;
         startMenuParent.SetActive(false);
         breathParent.SetActive(true);
+        CloseCamera();
     }
 
     void Start()
     {
-        breathParent.SetActive(false);
-        StartCoroutine(DeathFlash(1.5f, 0,false,1));
+        if(skipStartup)
+        {
+            OrbitCamera.Instance.LerpToActivation();
+            CloseStartMenu();
+            _player.transform.SetParent(null);
+            _player.body.isKinematic = false;
+            ResetPlayer();
+            StartCoroutine(DeathFlash(0.5f, 0,false, 0.25f));
+        }
+        else
+        {
+            breathParent.SetActive(false);
+            StartCoroutine(DeathFlash(1.5f, 0,false, 0.25f));
+        }
     }
 
     void Update()
@@ -150,6 +165,7 @@ public class UIManager : MonoBehaviour
         float time = 0f;
         float startOpacity = 1-targetOpacity;
         deathImage.color = new Color(deathImage.color.r, deathImage.color.g, deathImage.color.b, startOpacity); 
+
         yield return new WaitForSeconds(startDelay);
         
         if(!firstPhase)
@@ -179,7 +195,7 @@ public class UIManager : MonoBehaviour
     public void ResetPlayer()
     {
         _player.transform.position = spawnpoint.position;
-        OrbitCamera.Instance.transform.rotation = spawnpoint.rotation;
+        //OrbitCamera.Instance.transform.rotation = spawnpoint.rotation;
         _player._breath.ResetBreath();
     }
 

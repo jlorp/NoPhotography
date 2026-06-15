@@ -4375,10 +4375,6 @@ PrefabInstance:
       propertyPath: spawnpoint
       value: 
       objectReference: {fileID: 1590827506}
-    - target: {fileID: 5898311917173507393, guid: e65073049ec8db8498111f86499cd46b, type: 3}
-      propertyPath: breathParent
-      value: 
-      objectReference: {fileID: 1066446191}
     - target: {fileID: 6005323680205028827, guid: e65073049ec8db8498111f86499cd46b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -5417,11 +5413,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1017445376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1066446191 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6586265755060963858, guid: e65073049ec8db8498111f86499cd46b, type: 3}
-  m_PrefabInstance: {fileID: 712589969}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1067889444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1431235197736857501, guid: efa8a9f7b0716204db034c2892e93c6c, type: 3}
