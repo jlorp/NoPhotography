@@ -8,6 +8,7 @@ public class BreathLogic : MonoBehaviour
 
     public float maxBreathCapacity;
     public MovingSphere _player;
+    public Animation _animation;
 
     void Start()
     {
@@ -41,5 +42,15 @@ public class BreathLogic : MonoBehaviour
     public void ResetBreath()
     {
         breathRemaining = maxBreathCapacity;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _animation.Play("Player_WiggleDamage");
+        Vector3 hitNormal = collision.contacts[0].normal;
+        float forceMagnitude = (collision.impulse).magnitude;
+        forceMagnitude = Mathf.Clamp(forceMagnitude, 0.75f , 3);
+        _player.body.AddForce( hitNormal * forceMagnitude * 2, ForceMode.Impulse);
+        breathRemaining -= forceMagnitude * 1.33f;
     }
 }

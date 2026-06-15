@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3700747632348852759}
+  - component: {fileID: 3944067925418949245}
   m_Layer: 0
   m_Name: Art
   m_TagString: Untagged
@@ -31,7 +32,23 @@ Transform:
   m_Children:
   - {fileID: 7917892552032024790}
   m_Father: {fileID: 1249586501358832181}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.1253202, y: -0.09229636, z: -0.04668808}
+--- !u!111 &3944067925418949245
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4492550604318967417}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f8f399ecf81d2c24ba5ae53c6f40d51a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f8f399ecf81d2c24ba5ae53c6f40d51a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4918256517572924787
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +224,7 @@ MonoBehaviour:
   drowning: 0
   _camera: {fileID: 366189035561746336}
   _breath: {fileID: 2041057511679150894}
+  isHeldByClaw: 0
 --- !u!54 &7895083787797769783
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -248,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBreathCapacity: 30
   _player: {fileID: 2603974415153141308}
+  _animation: {fileID: 3944067925418949245}
 --- !u!114 &4387815549754529321
 MonoBehaviour:
   m_ObjectHideFlags: 0
