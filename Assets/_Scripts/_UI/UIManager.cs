@@ -84,6 +84,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+
     void Update()
     {
         if(inStartMenu) return;
@@ -157,6 +158,7 @@ public class UIManager : MonoBehaviour
     public void BlackFade()
     {
         _player.LockInput();
+        OrbitCamera.Instance.DeactivateCamera();
         StartCoroutine(DeathFlash(1f, 1, true));
     }
 
@@ -189,13 +191,19 @@ public class UIManager : MonoBehaviour
             ResetPlayer();
             yield return new WaitForSeconds(1);
             StartCoroutine(DeathFlash(1.5f, 0,false));
+            OrbitCamera.Instance.GoToRespawnCameraPosition();
         }
     }
 
     public void ResetPlayer()
     {
-        _player.transform.position = spawnpoint.position;
-        //OrbitCamera.Instance.transform.rotation = spawnpoint.rotation;
+
+        _player.transform.SetParent(spawnpoint);
+        _player.transform.localPosition = Vector3.zero;
+        _player.transform.localRotation = Quaternion.Euler(new Vector3(0,180,0));
+        _player.body.isKinematic = true;
+
+        ClawLogic.Instance.DropClaw();
         _player._breath.ResetBreath();
     }
 

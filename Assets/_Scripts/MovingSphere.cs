@@ -195,6 +195,8 @@ public class MovingSphere : MonoBehaviour {
 
 	void Update () {
 
+		if(body.isKinematic) return;
+
 		UpdateInputs();
 
 		if (playerInputSpace) 
@@ -225,6 +227,12 @@ public class MovingSphere : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		if(body.isKinematic)
+		{
+			transform.localPosition= Vector3.zero;
+			return;
+		} 
+
 		Vector3 gravity = CustomGravity.GetGravity(body.position, out upAxis);
 		UpdateState();
 

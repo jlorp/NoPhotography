@@ -34,10 +34,11 @@ public class OrbitCamera : MonoBehaviour {
 	Quaternion orbitRotation;
 	bool desiresFlatTilt;
 
+	public Transform resetPosition;
+
+
+	
 	bool isActivated = false;
-	Quaternion rotationOnActivate;
-	Vector3 positionOnActivate; 
-	float percentActive=0;
 
 	void Awake () {
 		Instance = this;
@@ -46,13 +47,30 @@ public class OrbitCamera : MonoBehaviour {
 		//transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);
 	}
 
+	public void DeactivateCamera()
+	{
+		isActivated = false;
+	}
+
+	public void GoToRespawnCameraPosition()
+	{
+		transform.position = resetPosition.position;
+		transform.localRotation = resetPosition.localRotation;
+	}
+	
 	public void LerpToActivation()
 	{
 		orbitAngles = new Vector3 (0,90,0);
-		rotationOnActivate = transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);
-		
-		positionOnActivate = transform.position;
+		transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);
 		isActivated = true;
+	}
+
+	Transform CreateResetPositionObject()
+	{
+		Transform newObject = new GameObject("ResetPosition").transform;
+		newObject.position = transform.position;
+		newObject.localRotation = transform.rotation;
+		return newObject;
 	}
 
 	Vector3 CameraHalfExtends {
@@ -110,8 +128,13 @@ public class OrbitCamera : MonoBehaviour {
 			rectPosition = castFrom + castDirection * hit.distance;
 			lookPosition = rectPosition - rectOffset;
 		}
-		
+
 		transform.SetPositionAndRotation(lookPosition, lookRotation);
+
+		if(resetPosition == null)
+		{
+			resetPosition = CreateResetPositionObject();
+		}
 	}
 
 	void UpdateGravityAlignment () {

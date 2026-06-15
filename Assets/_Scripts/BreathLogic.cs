@@ -17,12 +17,12 @@ public class BreathLogic : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(_player.Swimming && breathRemaining > 0)
+        UIManager.Instance.breathMeter.SetStat(breathRemaining);
+        
+        if(_player.Swimming && breathRemaining > 0 && !_player.body.isKinematic)
         {
             breathRemaining -= Time.deltaTime;
             breathRemaining = Mathf.Clamp( breathRemaining ,0 , maxBreathCapacity );
-
-            UIManager.Instance.breathMeter.SetStat(breathRemaining);
 
             if(breathRemaining == 0)
             {

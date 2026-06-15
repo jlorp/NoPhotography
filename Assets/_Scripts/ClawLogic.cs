@@ -12,6 +12,12 @@ public class ClawLogic : MonoBehaviour
 
     bool startState = true;
 
+    public static ClawLogic Instance;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Update()
     {
@@ -22,9 +28,10 @@ public class ClawLogic : MonoBehaviour
         }
     }
 
-    void DropClaw()
+    public void DropClaw()
     {
         _animaiton.Play("SubDrop");
+        _player.transform.localPosition = Vector3.zero;
     }
 
     void UnparentSub()

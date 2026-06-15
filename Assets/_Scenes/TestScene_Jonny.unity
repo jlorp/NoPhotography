@@ -4374,7 +4374,11 @@ PrefabInstance:
     - target: {fileID: 5898311917173507393, guid: e65073049ec8db8498111f86499cd46b, type: 3}
       propertyPath: spawnpoint
       value: 
-      objectReference: {fileID: 1590827506}
+      objectReference: {fileID: 812793605}
+    - target: {fileID: 5898311917173507393, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: skipStartup
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6005323680205028827, guid: e65073049ec8db8498111f86499cd46b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -14080,37 +14084,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1431235197736857501, guid: 1b77f74be7a50414284533002ad6de2c, type: 3}
   m_PrefabInstance: {fileID: 1572451799}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1590827505
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1590827506}
-  m_Layer: 0
-  m_Name: Spawnpoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1590827506
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590827505}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.39, y: -4.7, z: 0.07}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1610739030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14811,6 +14784,7 @@ MonoBehaviour:
   obstructionMask:
     serializedVersion: 2
     m_Bits: 183
+  resetPosition: {fileID: 0}
 --- !u!114 &1868905740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16218,6 +16192,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2041057511679150894, guid: 4f10028b095f7f84580c9e08ea4f6446, type: 3}
+      propertyPath: maxBreathCapacity
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2603974415153141308, guid: 4f10028b095f7f84580c9e08ea4f6446, type: 3}
       propertyPath: playerInputSpace
       value: 
@@ -16908,6 +16886,5 @@ SceneRoots:
   - {fileID: 431103114}
   - {fileID: 1017445376}
   - {fileID: 398545264}
-  - {fileID: 1590827506}
   - {fileID: 153008208}
   - {fileID: 2070973206}
