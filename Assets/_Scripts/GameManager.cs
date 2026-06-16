@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.expMeter.SetMaxStat(expPerLevel);
         UIManager.Instance.expMeter.SetStat(0);
         UpgradeMaxBreath();
+        player._breath.ResetBreath();
     }
 
     public void LevelUp()
@@ -40,10 +41,6 @@ public class GameManager : MonoBehaviour
         if (expToAdd != 0)
         {
            AddExperience(0);
-        }
-        else
-        {
-            OnDoneAddingExperience();
         }
     }
 
