@@ -42,15 +42,15 @@ public class UIManager : MonoBehaviour
 
     public Transform spawnpoint;
 
-    [Header("Wallet")]
-    public CashUI cashUI;
-    public GameObject cashParent;
-
     [Header("Dependencies")]
     public MovingSphere _player;
 
     [Header("InteractionsPrompt")]
     public InteractPromptUI _interactPrompt;
+
+    [Header("Exp Bar")]
+    public GameObject expParent;
+    public BarUI expMeter;
 
     bool inStartMenu = true;
 
@@ -64,7 +64,6 @@ public class UIManager : MonoBehaviour
         inStartMenu = false;
         startMenuParent.SetActive(false);
         breathParent.SetActive(true);
-        cashParent.SetActive(true);
         CloseCamera();
     }
 
@@ -84,9 +83,10 @@ public class UIManager : MonoBehaviour
         {
             _player.isHeldByClaw = true;
             breathParent.SetActive(false);
-            cashParent.SetActive(false);
             StartCoroutine(DeathFlash(1.5f, 0,false, 0.25f));
         }
+
+        expParent.SetActive(false);
     }
 
 
@@ -131,10 +131,6 @@ public class UIManager : MonoBehaviour
         gameIsPaused = true;
     }
 
-    public void UpdateWallet(float walletAmount)
-    {
-        cashUI.UpdateWallet(walletAmount);
-    }
 
     public void Popup(string newtext, int _color)
     {

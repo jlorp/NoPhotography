@@ -11,6 +11,8 @@ public class GoalManager : MonoBehaviour
 
     public GameObject emptyGoalPrefab;
 
+    float expToAdd = 0;
+
     void Awake()
     {
         Instance = this;
@@ -31,6 +33,9 @@ public class GoalManager : MonoBehaviour
             CompleteGoal(goal);
         }
 
+        GameManager.Instance.AddExperience(expToAdd);
+        expToAdd=0;
+        
         HeldGoals = new List<GoalData>();
     }
 
@@ -127,7 +132,8 @@ public class GoalManager : MonoBehaviour
                     if (_status == 2)
                     {
                         _ui.CompleteGoal();
-                        Wallet.Instance.AddCash(_goal.cashReward);   
+                        //Wallet.Instance.AddCash(_goal.cashReward);   
+                        expToAdd += _goal.cashReward;
                     }
                     if(_status == 0)
                     {
