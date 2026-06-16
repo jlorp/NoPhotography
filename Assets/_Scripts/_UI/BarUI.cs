@@ -54,16 +54,10 @@ public class BarUI : MonoBehaviour
         {
             if(GameManager.Instance.expInMeter >= GameManager.Instance.expPerLevel)
             {
-                GameManager.Instance.LevelUp();
-            }
-
-            if (GameManager.Instance.expToAdd != 0)
-            {
-                GameManager.Instance.AddExperience(0);
+                UIManager.Instance._itemUI.PlayAnimation();
             }
             else
             {
-                yield return new WaitForSeconds(1f);
                 GameManager.Instance.OnDoneAddingExperience();
             }
         }
@@ -83,6 +77,5 @@ public class BarUI : MonoBehaviour
             float newHeight = ( stat / maxStat) * height;
             statBar.sizeDelta = new Vector2(width, newHeight);
         }
-    
     }
 }

@@ -52,6 +52,9 @@ public class UIManager : MonoBehaviour
     public GameObject expParent;
     public BarUI expMeter;
 
+    [Header("Unlock Item")]
+    public ItemUnlockUI _itemUI;
+
     bool inStartMenu = true;
 
     void Awake()

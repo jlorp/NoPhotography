@@ -36,6 +36,15 @@ public class GameManager : MonoBehaviour
         level +=1;
         UIManager.Instance.expMeter.SetStat(expInMeter);
         UnlockItem();
+
+        if (expToAdd != 0)
+        {
+           AddExperience(0);
+        }
+        else
+        {
+            OnDoneAddingExperience();
+        }
     }
 
     public void UnlockItem()
