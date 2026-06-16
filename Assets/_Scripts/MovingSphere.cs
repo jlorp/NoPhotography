@@ -105,8 +105,10 @@ public class MovingSphere : MonoBehaviour {
 	int stepsSinceLastGrounded, stepsSinceLastJump;
 
 	[Header("Dependencies")]
+	
 	[SerializeField]
 	CameraLogic _camera;
+
 	public BreathLogic _breath;
 
 	MeshRenderer meshRenderer;

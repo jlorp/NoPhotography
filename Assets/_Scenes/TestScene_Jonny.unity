@@ -18,7 +18,7 @@ RenderSettings:
   m_FogColor: {r: 0, g: 0.8701009, b: 0.93333334, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 5
+  m_LinearFogStart: 0
   m_LinearFogEnd: 40
   m_AmbientSkyColor: {r: 0.49167854, g: 0.79615086, b: 0.8207547, a: 1}
   m_AmbientEquatorColor: {r: 0.7735849, g: 0.5887522, b: 0.31016377, a: 1}
@@ -4206,6 +4206,42 @@ PrefabInstance:
     - target: {fileID: 30452969016450681, guid: e65073049ec8db8498111f86499cd46b, type: 3}
       propertyPath: m_Name
       value: GameLogic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792003008718077871, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2151795270525134549}
+    - target: {fileID: 4692027662639717965, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692027662639717965, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692027662639717965, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692027662639717965, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5138325540252145360, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5138325540252145360, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5138325540252145360, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5138325540252145360, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5898311917173507393, guid: e65073049ec8db8498111f86499cd46b, type: 3}
       propertyPath: _player

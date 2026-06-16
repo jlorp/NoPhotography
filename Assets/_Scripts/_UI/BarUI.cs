@@ -26,6 +26,12 @@ public class BarUI : MonoBehaviour
 
     public void StartLerpStat(float amountToAdd, float lerpSpeed, bool isExpBar)
     {
+        if(amountToAdd == 0)
+        {
+            GameManager.Instance.OnDoneAddingExperience();
+            return;
+        }
+
         StartCoroutine(LerpBar(amountToAdd, lerpSpeed, isExpBar));
     }
 

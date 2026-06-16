@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     public PopupUI _popupUI;
 
     [Header("Breath Meter")]
-    public BarUI breathMeter;
+    public OxygenBarMaster_UI breathMeter;
     public Image deathImage;
     public GameObject breathParent;
 

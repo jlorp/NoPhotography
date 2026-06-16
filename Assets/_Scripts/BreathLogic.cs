@@ -7,13 +7,20 @@ public class BreathLogic : MonoBehaviour
     float breathRemaining;
 
     public float maxBreathCapacity;
+    [HideInInspector]
+    public float breathCapacityPerUnit;
+
     public MovingSphere _player;
     public Animation _animation;
+
+    void Awake()
+    {
+        breathCapacityPerUnit = maxBreathCapacity;
+    }
 
     void Start()
     {
         ResetBreath();
-        UIManager.Instance.breathMeter.SetMaxStat(maxBreathCapacity);
     }
 
     void FixedUpdate()

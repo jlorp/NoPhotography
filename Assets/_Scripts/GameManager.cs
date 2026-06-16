@@ -6,9 +6,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    //Levelup Stuff
     public float expPerLevel = 100;
     public float expInMeter;
     public int level;
+
+    //dependencies
+    public MovingSphere player;
 
     [HideInInspector]
     public float expToAdd;
@@ -23,6 +27,7 @@ public class GameManager : MonoBehaviour
         expInMeter = 0;
         UIManager.Instance.expMeter.SetMaxStat(expPerLevel);
         UIManager.Instance.expMeter.SetStat(0);
+        UpgradeMaxBreath();
     }
 
     public void LevelUp()
@@ -30,6 +35,18 @@ public class GameManager : MonoBehaviour
         expInMeter = 0;
         level +=1;
         UIManager.Instance.expMeter.SetStat(expInMeter);
+        UnlockItem();
+    }
+
+    public void UnlockItem()
+    {
+        UpgradeMaxBreath();
+    }
+
+    public void UpgradeMaxBreath()
+    {
+        player._breath.maxBreathCapacity += player._breath.breathCapacityPerUnit;
+        UIManager.Instance.breathMeter.ExpandMeter();
     }
 
     public void AddExperience(float _expToadd)
