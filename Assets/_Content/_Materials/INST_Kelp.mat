@@ -30,22 +30,25 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: 822f18de91db78d4d9ac2248766de698, type: 3}
+        m_Texture: {fileID: 2800000, guid: f171fcd896cd18548b31c856d149fe8d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 0.8
+    - _Amplitude: 0.3
     - _Cull: 0
-    - _Frequency: 50
+    - _Frequency: 0.5
     - _GlobalWindSize: 50
     - _InvertVertexColorMask: 1
     - _Offset: 0
     - _QueueControl: 0
-    - _Speed: 1
+    - _Speed: 0.5
     - _Use_Global_Wind: 0
+    - _Wiggle_Y: 1
+    - _Wiggle_Z: 1
     m_Colors:
     - _Offset: {r: 0.51, g: 0, b: 0, a: 0}
+    - _SineNoise: {r: 0.1, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6323721467624085702
 MonoBehaviour:
