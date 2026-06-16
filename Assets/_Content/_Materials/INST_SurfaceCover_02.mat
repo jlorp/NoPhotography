@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: INST_SurfaceCoer
+  m_Name: INST_SurfaceCover_02
   m_Shader: {fileID: -6465566751694194690, guid: d6fd146dd6c689f4e98d1d3ffaddf84e, type: 3}
   m_Parent: {fileID: -876546973899608171, guid: d6fd146dd6c689f4e98d1d3ffaddf84e, type: 3}
   m_ModifiedSerializedProperties: 2
@@ -35,21 +35,21 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 0.01
+    - _Amplitude: 0.2
     - _Cull: 0
-    - _Frequency: 0.5
+    - _Frequency: 2
     - _GlobalWindSize: 50
     - _InvertVertexColorMask: 1
     - _Offset: 0
     - _QueueControl: 0
     - _Speed: 0.5
-    - _Tiling: 20
+    - _Tiling: 35
     - _Use_Global_Wind: 0
-    - _Wiggle_Y: 1
+    - _Wiggle_Y: 0
     - _Wiggle_Z: 1
     m_Colors:
     - _BaseColorTint: {r: 0.5619832, g: 1, b: 0, a: 0}
-    - _Offset: {r: 0.51, g: 0, b: 0, a: 0}
+    - _Offset: {r: 2.26, g: -2.53, b: 0, a: 0}
     - _SineNoise: {r: 0.1, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6323721467624085702
