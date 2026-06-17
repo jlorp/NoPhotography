@@ -244,19 +244,23 @@ public class UIManager : MonoBehaviour
         if(inStartMenu) return;
 
         cameraUIParent.SetActive(true);
+        breathParent.SetActive(false);
         Camera.main.fieldOfView = maxFov;
         cameraIsOpen = true;
         OrbitCamera.Instance.distance=0;
         _player.submarine.gameObject.SetActive(false);
+        _player.LockInput();
     }
 
     public void CloseCamera()
     {
         OrbitCamera.Instance.ForceFlattenTilt();
         cameraUIParent.SetActive(false);
+        breathParent.SetActive(true);
         Camera.main.fieldOfView = 60;
         cameraIsOpen = false;
         OrbitCamera.Instance.distance=4;
         _player.submarine.gameObject.SetActive(true);
+        _player.UnlockInput();
     }
 }

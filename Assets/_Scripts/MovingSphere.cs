@@ -62,7 +62,8 @@ public class MovingSphere : MonoBehaviour {
 
 	bool OnSteep => steepContactCount > 0;
 
-	bool CameraOpen = false;
+	[HideInInspector]
+	public bool CameraOpen = false;
 
 	bool InWater => submergence > 0f;
 
@@ -138,24 +139,19 @@ public class MovingSphere : MonoBehaviour {
 		lockInput = false;
 	}
 
+	void Brake()
+	{
+		velocity = Vector3.MoveTowards(velocity, Vector3.zero, Time.deltaTime * 10);
+	}
+
 	void UpdateInputs()
 	{
 		HandleCursorLock();
-
-		if (lockInput) return;
-
-		playerInput.x = Input.GetAxisRaw("Horizontal");
-		playerInput.z = Input.GetAxisRaw("Shutter");
-		if(Input.GetButton("Shutter Mouse")) playerInput.z = 1;
-		playerInput.y = Input.GetAxisRaw("Vertical");
-
 
 		if(CameraOpen)
 		{
 			_camera.CameraControls();
 		}
-
-		desiredBoost |= Input.GetButtonDown("Jump");
 
 		if(Input.GetButtonDown("Open Camera"))
 		{
@@ -170,6 +166,16 @@ public class MovingSphere : MonoBehaviour {
 				CameraOpen = true;
 			}
 		}
+
+		if (lockInput) return;
+
+		playerInput.x = Input.GetAxisRaw("Horizontal");
+		playerInput.z = Input.GetAxisRaw("Shutter");
+		if(Input.GetButton("Shutter Mouse")) playerInput.z = 1;
+		playerInput.y = Input.GetAxisRaw("Vertical");
+
+
+		desiredBoost |= Input.GetButtonDown("Jump");
 	}
 
 	void Update () {
@@ -218,6 +224,8 @@ public class MovingSphere : MonoBehaviour {
 		Vector3 gravity = CustomGravity.GetGravity(body.position, out upAxis);
 	
 		UpdateState();
+
+		if(CameraOpen) Brake();
 
 		if(desiredBoost)
 		{
@@ -335,8 +343,9 @@ public class MovingSphere : MonoBehaviour {
 		transform.Rotate(Vector3.right, playerInput.y * swimRotation * 10 * Time.deltaTime);
 
 		var rotation = transform.eulerAngles;
-		float xLerp = Mathf.LerpAngle(rotation.z, 0, Time.deltaTime * 10f);
-		transform.eulerAngles = new Vector3(rotation.x, rotation.y, xLerp);
+		float zLerp = Mathf.LerpAngle(rotation.z, 0, Time.deltaTime * 10f);
+		
+		transform.eulerAngles = new Vector3(rotation.x, rotation.y, zLerp);
 
 		Vector3 targetSpeed = playerInputLocal * maxSwimSpeed;
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraLogic : MonoBehaviour
 {
-    bool picReady = true;
 	public List<Item> PhotoContents;
 	List<ItemData> PhotoContentsItemData;
 
@@ -48,14 +47,13 @@ public class CameraLogic : MonoBehaviour
 		UIManager.Instance.Zoom(zoomInputMouse * 30);
 
         float shutterAxis = Input.GetAxisRaw("Shutter");
-        picReady |= shutterAxis < .1f;
 
-		if((picReady && shutterAxis > .9f) || Input.GetButtonDown("Shutter Mouse"))
+		if(Input.GetButtonDown("Shutter Bumper") || Input.GetButtonDown("Shutter Mouse"))
 		{
 			SetViewFinderVariables();
 			_photoCapture.TakePicture(viewportRect);
 			UIManager.Instance.TakePicture();
-            picReady = false;
+            
 			RaycastHit[] photoCasts = RaycastArray(20, 30);
 			PhotoContents = SortArray(photoCasts);
 			PhotoContentsItemData = ItemListToItemDataList(PhotoContents);

@@ -28,7 +28,7 @@ public class BreathLogic : MonoBehaviour
     {
         UIManager.Instance.breathMeter.SetStat(breathRemaining);
         
-        if(_player.Swimming && breathRemaining > 0 && !_player.body.isKinematic)
+        if(_player.Swimming && breathRemaining > 0 && !_player.body.isKinematic && !_player.CameraOpen)
         {
             breathRemaining -= Time.deltaTime;
             breathRemaining = Mathf.Clamp( breathRemaining ,0 , maxBreathCapacity );
@@ -53,6 +53,7 @@ public class BreathLogic : MonoBehaviour
     {
         if(_player.drowning) return;
 
+        UIManager.Instance.CloseCamera();
         _explosion.Play();
         _player.submarine.gameObject.SetActive(false);
         _player.drowning = true;
