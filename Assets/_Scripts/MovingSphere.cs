@@ -189,6 +189,7 @@ public class MovingSphere : MonoBehaviour {
 	void Boost()
 	{
 		velocity += submarine.forward * 20;
+		velocity = Vector3.ClampMagnitude(velocity, 30f);
 		OrbitCamera.Instance.CameraBoostLag( 1.25f , -0.5f, 20);
 		_breath.RemoveBreath(5f);
 	}
