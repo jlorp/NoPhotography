@@ -11,7 +11,8 @@ public class CurrentVolume : MonoBehaviour
     {
         if(player)
         {
-            player.body.AddForce(this.forceToAdd);
+            Vector3 localForce = (this.transform.forward * forceToAdd.z) + (this.transform.right* forceToAdd.x) + (this.transform.up * forceToAdd.y);
+            player.body.AddForce(localForce);
         }
     }
 
