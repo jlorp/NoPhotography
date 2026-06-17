@@ -52,9 +52,6 @@ public class MovingSphere : MonoBehaviour {
 	
 	Vector3 upAxis, rightAxis, forwardAxis;
 
-	[HideInInspector]
-	public bool desiredBoost, boosting;
-
 	Vector3 contactNormal, steepNormal;
 
 	Vector3 lastContactNormal, lastSteepNormal, lastConnectionVelocity;
@@ -79,6 +76,15 @@ public class MovingSphere : MonoBehaviour {
 
 	float minGroundDotProduct;
 
+	[Header("Boost")]
+
+	public bool boostUnlocked = true;
+
+	public float boostAmount = 10f;
+
+	[HideInInspector]
+	public bool desiredBoost, boosting;
+
 	[Header("Dependencies")]
 	
 	[SerializeField]
@@ -87,9 +93,8 @@ public class MovingSphere : MonoBehaviour {
 	public BreathLogic _breath;
 
 	MeshRenderer meshRenderer;
-	public bool isHeldByClaw;
 
-	public bool boostUnlocked = true;
+	public bool isHeldByClaw;
 
 	void OnValidate () {
 		minGroundDotProduct = Mathf.Cos(maxGroundAngle * Mathf.Deg2Rad);
@@ -196,8 +201,8 @@ public class MovingSphere : MonoBehaviour {
 	{
 		if (boosting) return;
 		boosting = true;
-		velocity += submarine.forward * 20;
-		velocity = Vector3.ClampMagnitude(velocity, 30f);
+		velocity += submarine.forward * boostAmount;
+		velocity = Vector3.ClampMagnitude(velocity, 20f);
 		OrbitCamera.Instance.CameraBoostLag( 1.25f , -0.5f, 20);
 		_breath.RemoveBreath(5f);
 	}

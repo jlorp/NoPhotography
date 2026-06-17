@@ -12,6 +12,7 @@ public class BreathLogic : MonoBehaviour
 
     public MovingSphere _player;
     public Animation _animation;
+    public ParticleSystem _explosion;
 
     void Awake()
     {
@@ -52,6 +53,8 @@ public class BreathLogic : MonoBehaviour
     {
         if(_player.drowning) return;
 
+        _explosion.Play();
+        _player.submarine.gameObject.SetActive(false);
         _player.drowning = true;
         UIManager.Instance.BlackFade();
         GoalManager.Instance.FailGoals();
@@ -65,7 +68,7 @@ public class BreathLogic : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        _animation.Play("Player_WiggleDamage");
+        _animation.Play("Player_WiggleDamage", PlayMode.StopAll); 
         Vector3 hitNormal = collision.contacts[0].normal;
         float forceMagnitude = _player.body.velocity.magnitude;
         forceMagnitude = Mathf.Clamp(forceMagnitude, 0.75f , 3);

@@ -42,7 +42,7 @@ public class ClawLogic : MonoBehaviour
 
     void ResetPlayer()
     {
-        UIManager.Instance.ResetPlayer();   
+        UIManager.Instance.ResetPlayer();
     }
 
     void UnparentSub()

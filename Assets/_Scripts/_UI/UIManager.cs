@@ -163,7 +163,7 @@ public class UIManager : MonoBehaviour
     {
         _player.LockInput();
         OrbitCamera.Instance.DeactivateCamera();
-        StartCoroutine(DeathFlash(1f, 1, true));
+        StartCoroutine(DeathFlash(1f, 1, true, 0.5f));
     }
 
     IEnumerator DeathFlash(float duration, float targetOpacity, bool firstPhase, float startDelay = 0)
@@ -193,6 +193,7 @@ public class UIManager : MonoBehaviour
         if(firstPhase == true)
         {
             ResetPlayer();
+            _player.submarine.gameObject.SetActive(true);
             yield return new WaitForSeconds(1);
             StartCoroutine(DeathFlash(1.5f, 0,false));
             OrbitCamera.Instance.GoToRespawnCameraPosition();
