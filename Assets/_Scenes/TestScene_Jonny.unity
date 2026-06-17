@@ -1263,6 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterFX: {fileID: 1118061516}
+  waterFogTrigger: {fileID: 1869071039}
 --- !u!1001 &255454350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13351,6 +13352,11 @@ Transform:
 --- !u!4 &1868905738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2714258760377222386, guid: 14df07561f3a8dc43b638e2456bada72, type: 3}
+  m_PrefabInstance: {fileID: 5386047119308259947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1869071039 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 773171051763436439, guid: 14df07561f3a8dc43b638e2456bada72, type: 3}
   m_PrefabInstance: {fileID: 5386047119308259947}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1898520505

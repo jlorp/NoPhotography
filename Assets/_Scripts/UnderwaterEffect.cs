@@ -6,16 +6,23 @@ public class UnderwaterEffect : MonoBehaviour
 {
 
     [SerializeField] GameObject waterFX;
+    public Collider waterFogTrigger;
 
     private void OnTriggerEnter(Collider other)
     {
-        RenderSettings.fog = true;
-        waterFX.SetActive(true);
+        if(other == waterFogTrigger)
+        {
+            RenderSettings.fog = true;
+            waterFX.SetActive(true);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        RenderSettings.fog = false;
-        waterFX.SetActive(false);
+        if(other == waterFogTrigger)
+        {
+            RenderSettings.fog = false;
+            waterFX.SetActive(false);
+        }
     }
 }

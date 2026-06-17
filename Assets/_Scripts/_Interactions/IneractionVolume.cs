@@ -40,7 +40,6 @@ public class IneractionVolume : MonoBehaviour
             UIManager.Instance.RemoveInteractPrompt();
             isActive = false;
 
-            //UIManager.Instance.BlackFade();
             StartCoroutine(LerpToPoint(1.5f));
         }
     }
@@ -68,5 +67,8 @@ public class IneractionVolume : MonoBehaviour
             time += Time.deltaTime;
             yield return null; 
         }
+
+        OrbitCamera.Instance.DeactivateCamera();
+        OrbitCamera.Instance.GoToStartPosition();
     }
 }

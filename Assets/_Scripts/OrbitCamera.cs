@@ -43,11 +43,18 @@ public class OrbitCamera : MonoBehaviour {
 	[HideInInspector]
 	public bool isActivated = false;
 
+	Vector3 startPosition;
+	Quaternion startRotation;
+	float startScreenFOV;
+
 	void Awake () {
 		Instance = this;
 		regularCamera = GetComponent<Camera>();
 		focusPoint = focus.position;
-		//transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);
+		
+		startPosition = transform.position;
+		startRotation = transform.localRotation;
+		startScreenFOV = Camera.main.fieldOfView;
 	}
 
 	public void DeactivateCamera()
@@ -59,6 +66,13 @@ public class OrbitCamera : MonoBehaviour {
 	{
 		transform.position = resetPosition.position;
 		transform.localRotation = resetPosition.localRotation;
+	}
+
+	public void GoToStartPosition()
+	{
+		transform.position = startPosition;
+		transform.localRotation = startRotation;
+
 	}
 	
 	public void LerpToActivation()
