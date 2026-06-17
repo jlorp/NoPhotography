@@ -119,6 +119,39 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 183
   resetPosition: {fileID: 0}
+  _boostCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 10.373583
+      outSlope: 10.373583
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.054554578
+    - serializedVersion: 3
+      time: 0.27865213
+      value: 0.9369998
+      inSlope: 0.0779641
+      outSlope: 0.0779641
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.6919039
+      outWeight: 0.34259605
+    - serializedVersion: 3
+      time: 1
+      value: -0.0051574707
+      inSlope: -0.20634396
+      outSlope: -0.20634396
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.67666125
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   isActivated: 0
 --- !u!114 &8287553807707446514
 MonoBehaviour:

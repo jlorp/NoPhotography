@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -36,6 +38,7 @@ public class OrbitCamera : MonoBehaviour {
 
 	public Transform resetPosition;
 
+	public AnimationCurve _boostCurve;
 
 	[HideInInspector]
 	public bool isActivated = false;
@@ -72,6 +75,31 @@ public class OrbitCamera : MonoBehaviour {
 		newObject.localRotation = transform.rotation;
 		return newObject;
 	}
+
+	public void CameraBoostLag(float duration, float zoomAmount, float FOVammount)
+	{
+		StartCoroutine(CameraZoomBump(duration, zoomAmount, FOVammount));
+	}
+
+	IEnumerator CameraZoomBump(float duration, float zoomAmount, float FOVammount)
+    {
+        float time = 0f;
+		float startingDistance = distance;
+		float startFOV = Camera.main.fieldOfView;
+
+        while (time < duration) 
+        {
+            time += Time.deltaTime;
+
+			float boostCurve = _boostCurve.Evaluate(time/duration);
+			distance = Mathf.Lerp(startingDistance, startingDistance + zoomAmount, boostCurve);
+			Camera.main.fieldOfView = Mathf.Lerp(startFOV, startFOV + FOVammount, boostCurve);
+
+            yield return null; 
+        }
+		distance = startingDistance;
+		Camera.main.fieldOfView = startFOV;
+    }
 
 	Vector3 CameraHalfExtends {
 		get {
