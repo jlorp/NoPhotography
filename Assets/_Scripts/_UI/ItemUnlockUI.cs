@@ -17,15 +17,8 @@ public class ItemUnlockUI : MonoBehaviour
 
     public void ClosePanel()
     {
-        // if (GameManager.Instance.expToAdd != 0)
-        // {
-        //     GameManager.Instance.AddExperience(0);
-        // }
-        // else
-        // {
-        //     GameManager.Instance.OnDoneAddingExperience();
-        // }
         GameManager.Instance.LevelUp();
+        
         _AnimParent.SetActive(false);
     }
     void Update()

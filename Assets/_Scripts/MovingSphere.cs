@@ -407,14 +407,12 @@ public class MovingSphere : MonoBehaviour {
 	{
 		float swimFactor = Mathf.Min(1f, submergence / swimThreshold);
 		float acceleration = maxSwimAcceleration;
-		Vector3 xAxis = rightAxis;
+		
 		Vector3 zAxis = forwardAxis;
 		Vector3 relativeVelocity = velocity - connectionVelocity;
 
 		Vector3 playerInputLocal = zAxis * playerInput.z;
 		playerInputLocal = Vector3.ClampMagnitude(playerInputLocal, 1);
-		float inputAdjustment = 1;
-		if(playerInput.z == 0) inputAdjustment = 0.05f;
 
 		transform.Rotate(Vector3.up, playerInput.x * swimRotation * 10 * Time.deltaTime);
 		transform.Rotate(Vector3.right, playerInput.y * swimRotation * 10 * Time.deltaTime);
@@ -424,6 +422,14 @@ public class MovingSphere : MonoBehaviour {
 		transform.eulerAngles = new Vector3(rotation.x, rotation.y, xLerp);
 
 		Vector3 targetSpeed = playerInputLocal * maxSwimSpeed;
+
+		float vectorcomp = Vector3.Dot(velocity.normalized,targetSpeed.normalized);
+		vectorcomp = Mathf.Clamp(vectorcomp,0,1);
+
+		float inputAdjustment = 1;
+		if(playerInput.z == 0) {inputAdjustment = 0.05f;}
+		else if(velocity.magnitude > targetSpeed.magnitude) inputAdjustment = 1-vectorcomp;
+
 		velocity = Vector3.MoveTowards(velocity, targetSpeed, acceleration * Time.deltaTime * inputAdjustment); 
 	}
 
