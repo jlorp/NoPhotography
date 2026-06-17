@@ -190,6 +190,7 @@ public class MovingSphere : MonoBehaviour {
 	{
 		velocity += submarine.forward * 20;
 		OrbitCamera.Instance.CameraBoostLag( 1.25f , -0.5f, 20);
+		_breath.RemoveBreath(5f);
 	}
 
 	void FixedUpdate () {
@@ -333,7 +334,7 @@ public class MovingSphere : MonoBehaviour {
 
 		velocity = Vector3.MoveTowards(velocity, targetSpeed, acceleration * Time.deltaTime * inputAdjustment); 
 
-		if(velocity.magnitude > maxSwimSpeed + .5f && vectorcomp >.5f)
+		if(velocity.magnitude > maxSwimSpeed + .5f)
 		{
 			targetSpeed = submarine.forward * velocity.magnitude;
 			velocity = Vector3.MoveTowards(velocity,targetSpeed, acceleration * Time.deltaTime * 500);

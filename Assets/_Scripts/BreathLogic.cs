@@ -39,6 +39,15 @@ public class BreathLogic : MonoBehaviour
         }
     }
 
+    public void RemoveBreath(float amount)
+    {
+        breathRemaining -= amount;
+        if(breathRemaining <= 0)
+        {
+            Die();
+        }
+    }
+
     void Die()
     {
         _player.drowning = true;
