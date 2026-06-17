@@ -50,6 +50,8 @@ public class BreathLogic : MonoBehaviour
 
     void Die()
     {
+        if(_player.drowning) return;
+
         _player.drowning = true;
         UIManager.Instance.BlackFade();
         GoalManager.Instance.FailGoals();
@@ -58,14 +60,16 @@ public class BreathLogic : MonoBehaviour
     public void ResetBreath()
     {
         breathRemaining = maxBreathCapacity;
+        _player.drowning = false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         _animation.Play("Player_WiggleDamage");
         Vector3 hitNormal = collision.contacts[0].normal;
-        float forceMagnitude = (collision.impulse).magnitude;
+        float forceMagnitude = _player.body.velocity.magnitude;
         forceMagnitude = Mathf.Clamp(forceMagnitude, 0.75f , 3);
+        _player.LockInput();
         _player.body.AddForce( hitNormal * forceMagnitude * 2, ForceMode.Impulse);
         breathRemaining -= forceMagnitude * 1.33f;
 

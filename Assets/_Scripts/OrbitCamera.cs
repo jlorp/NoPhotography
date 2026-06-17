@@ -99,6 +99,7 @@ public class OrbitCamera : MonoBehaviour {
         }
 		distance = startingDistance;
 		Camera.main.fieldOfView = startFOV;
+		GameManager.Instance.player.boosting = false;
     }
 
 	Vector3 CameraHalfExtends {

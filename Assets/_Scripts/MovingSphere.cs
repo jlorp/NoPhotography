@@ -52,7 +52,8 @@ public class MovingSphere : MonoBehaviour {
 	
 	Vector3 upAxis, rightAxis, forwardAxis;
 
-	bool desiredBoost;
+	[HideInInspector]
+	public bool desiredBoost, boosting;
 
 	Vector3 contactNormal, steepNormal;
 
@@ -127,6 +128,11 @@ public class MovingSphere : MonoBehaviour {
 		lockInput = true;
 	}
 
+	public void UnlockInput()
+	{
+		lockInput = false;
+	}
+
 	void UpdateInputs()
 	{
 		HandleCursorLock();
@@ -188,6 +194,8 @@ public class MovingSphere : MonoBehaviour {
 
 	void Boost()
 	{
+		if (boosting) return;
+		boosting = true;
 		velocity += submarine.forward * 20;
 		velocity = Vector3.ClampMagnitude(velocity, 30f);
 		OrbitCamera.Instance.CameraBoostLag( 1.25f , -0.5f, 20);
@@ -308,6 +316,7 @@ public class MovingSphere : MonoBehaviour {
 
 	void AdjustVelocityWater()
 	{
+		if (lockInput) return;
 		float swimFactor = Mathf.Min(1f, submergence / swimThreshold);
 		float acceleration = maxSwimAcceleration;
 		
@@ -327,18 +336,18 @@ public class MovingSphere : MonoBehaviour {
 		Vector3 targetSpeed = playerInputLocal * maxSwimSpeed;
 
 		float vectorcomp = Vector3.Dot(velocity.normalized,targetSpeed.normalized);
-		vectorcomp = Mathf.Clamp(vectorcomp,0,1);
+		float vectorcompClamped = Mathf.Clamp(vectorcomp,0,1);
 
 		float inputAdjustment = 1;
 		if(playerInput.z == 0) {inputAdjustment = 0.05f;}
-		else if(velocity.magnitude > targetSpeed.magnitude) inputAdjustment = 1-vectorcomp;
+		else if(velocity.magnitude > targetSpeed.magnitude) inputAdjustment = 1-vectorcompClamped;
 
 		velocity = Vector3.MoveTowards(velocity, targetSpeed, acceleration * Time.deltaTime * inputAdjustment); 
 
-		if(velocity.magnitude > maxSwimSpeed + .5f)
+		if((velocity.magnitude > maxSwimSpeed + 3f && playerInput.magnitude>0f && vectorcomp > 0.5f))
 		{
 			targetSpeed = submarine.forward * velocity.magnitude;
-			velocity = Vector3.MoveTowards(velocity,targetSpeed, acceleration * Time.deltaTime * 500);
+			velocity = Vector3.MoveTowards(velocity,targetSpeed, acceleration * Time.deltaTime * 10);
 		}
 	}
 
