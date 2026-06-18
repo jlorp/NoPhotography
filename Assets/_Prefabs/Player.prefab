@@ -4946,6 +4946,9 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  CastMask:
+    serializedVersion: 2
+    m_Bits: 129
 --- !u!114 &8492801286040748222
 MonoBehaviour:
   m_ObjectHideFlags: 0

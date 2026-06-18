@@ -117,7 +117,7 @@ MonoBehaviour:
   upAlignmentSpeed: 360
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 55
   resetPosition: {fileID: 0}
   _boostCurve:
     serializedVersion: 2
