@@ -5102,7 +5102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909b5a0d8db045545aff82b2c0f86704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBreathCapacity: 20
+  maxBreathCapacity: 10
   breathCapacityPerUnit: 0
   _player: {fileID: 2603974415153141308}
   _animation: {fileID: 3944067925418949245}

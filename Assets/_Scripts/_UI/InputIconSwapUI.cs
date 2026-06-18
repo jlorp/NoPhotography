@@ -11,17 +11,20 @@ public class InputIconSwapUI : MonoBehaviour
     public Sprite pauseSpriteX;
     public Sprite openCloseCameraSpriteX;
     public Sprite actionSpriteX;
+    public Sprite takePhotoSpriteX;
 
     [Header("PC Prompts")]
     public Sprite pauseSpritePC;
     public Sprite openCloseCameraSpritePC;
     public Sprite actionSpritePC;
+    public Sprite takePhotoSpritePC;
 
     [Header("Images to Swap")]
     public Image openCameraImage;
     public Image closeCameraImage;
     public Image pauseImage;
     public Image actionImage;
+    public Image takePhotoImage;
 
 
     private void OnEnable()
@@ -48,6 +51,7 @@ public class InputIconSwapUI : MonoBehaviour
         openCameraImage.sprite = closeCameraImage.sprite = openCloseCameraSpriteX;
         pauseImage.sprite = pauseSpriteX;
         actionImage.sprite = actionSpriteX;
+        takePhotoImage.sprite = takePhotoSpriteX;
     }
 
     void SetKeyboardGlyphs()
@@ -55,6 +59,7 @@ public class InputIconSwapUI : MonoBehaviour
         openCameraImage.sprite = closeCameraImage.sprite = openCloseCameraSpritePC;
         pauseImage.sprite = pauseSpritePC;
         actionImage.sprite = actionSpritePC;
+        takePhotoImage.sprite = takePhotoSpritePC;
     }
 
     private void HandleActionChange(object obj, InputActionChange change)

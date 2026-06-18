@@ -28,9 +28,9 @@ public class BreathLogic : MonoBehaviour
     {
         UIManager.Instance.breathMeter.SetStat(breathRemaining);
         
-        if(_player.Swimming && breathRemaining > 0 && !_player.body.isKinematic && !_player.CameraOpen)
+        if(_player.Swimming && breathRemaining > 0 && _player.playerInput.z > 0 && !_player.body.isKinematic && !_player.CameraOpen)
         {
-            breathRemaining -= Time.deltaTime;
+            breathRemaining -= Time.deltaTime * _player.playerInput.z;
             breathRemaining = Mathf.Clamp( breathRemaining ,0 , maxBreathCapacity );
 
             if(breathRemaining == 0)

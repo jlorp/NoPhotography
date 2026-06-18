@@ -269,12 +269,15 @@ public class UIManager : MonoBehaviour
 
     public void CloseCamera()
     {
-        openCameraPrompt.SetActive(true);
         closeCameraPrompt.SetActive(false);
-
-        pauseMenuUI.SetActive(true);
         OrbitCamera.Instance.ForceFlattenTilt();
         cameraUIParent.SetActive(false);
+
+        if(!_player.isHeldByClaw)
+        {
+            openCameraPrompt.SetActive(true);
+            pauseMenuUI.SetActive(true);
+        }
         breathParent.SetActive(true);
         Camera.main.fieldOfView = 60;
         cameraIsOpen = false;
