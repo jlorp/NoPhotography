@@ -48,7 +48,7 @@ Material:
     - _Wiggle_Y: 0
     - _Wiggle_Z: 1
     m_Colors:
-    - _BaseColorTint: {r: 0.5619832, g: 1, b: 0, a: 0}
+    - _BaseColorTint: {r: 0.86274517, g: 0.21960786, b: 0.33333334, a: 0}
     - _Offset: {r: 2.26, g: -2.53, b: 0, a: 0}
     - _SineNoise: {r: 0.1, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
