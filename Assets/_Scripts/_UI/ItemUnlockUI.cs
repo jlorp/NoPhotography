@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class ItemUnlockUI : MonoBehaviour
 {
@@ -9,8 +11,17 @@ public class ItemUnlockUI : MonoBehaviour
 
     bool closeWindowAvailable = false;
 
-    public void PlayAnimation()
+    public TextMeshProUGUI rewardNameText, rewardDescriptionText;
+    public Image rewardImage;
+
+
+    public void PlayAnimation(RewardData _data)
     {
+        rewardNameText.text = _data.rewardName;
+        rewardDescriptionText.text = _data.rewardDescription;
+        rewardImage.sprite = _data.rewardImage;
+        GameManager.Instance.NextUnlock = _data.ItemCode;
+
         _animaiton.Play("Item Reveal");
         _AnimParent.SetActive(true);
     }

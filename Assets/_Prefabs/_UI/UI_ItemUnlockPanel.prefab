@@ -624,3 +624,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animaiton: {fileID: 7093658634112584834}
   _AnimParent: {fileID: 8505052763129645647}
+  rewardNameText: {fileID: 5831908710113592661}
+  rewardDescriptionText: {fileID: 174702294656708783}
+  rewardImage: {fileID: 7320796644243693117}

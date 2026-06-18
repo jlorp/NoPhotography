@@ -72,7 +72,6 @@ public class OrbitCamera : MonoBehaviour {
 	{
 		transform.position = startPosition;
 		transform.localRotation = startRotation;
-
 	}
 	
 	public void LerpToActivation()

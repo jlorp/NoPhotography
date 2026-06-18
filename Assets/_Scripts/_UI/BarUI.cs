@@ -54,7 +54,9 @@ public class BarUI : MonoBehaviour
         {
             if(GameManager.Instance.expInMeter >= GameManager.Instance.expPerLevel)
             {
-                UIManager.Instance._itemUI.PlayAnimation();
+                int _level = GameManager.Instance.level;
+                RewardData levelReward = GameManager.Instance.LevelUnlocks[_level];
+                UIManager.Instance._itemUI.PlayAnimation(levelReward);
             }
             else
             {

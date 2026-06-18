@@ -205,7 +205,7 @@ public class MovingSphere : MonoBehaviour {
 
 	void Boost()
 	{
-		if (boosting) return;
+		if (boosting || !boostUnlocked) return;
 		boosting = true;
 		velocity += submarine.forward * boostAmount;
 		velocity = Vector3.ClampMagnitude(velocity, 20f);

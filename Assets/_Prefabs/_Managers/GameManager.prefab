@@ -47,4 +47,10 @@ MonoBehaviour:
   expPerLevel: 100
   expInMeter: 0
   level: 0
+  player: {fileID: 0}
   expToAdd: 0
+  NextUnlock: 0
+  LevelUnlocks:
+  - {fileID: 11400000, guid: 7cbbf0a01f087f64faad2ce953214320, type: 2}
+  - {fileID: 11400000, guid: 1fa0d885e1515b348bb8eacbddb8889e, type: 2}
+  - {fileID: 11400000, guid: 7cbbf0a01f087f64faad2ce953214320, type: 2}

@@ -9,13 +9,15 @@ public class GameManager : MonoBehaviour
     //Levelup Stuff
     public float expPerLevel = 100;
     public float expInMeter;
-    public int level;
+    public int level = 1;
 
     //dependencies
     public MovingSphere player;
 
     [HideInInspector]
     public float expToAdd;
+    public int NextUnlock;
+    public List<RewardData> LevelUnlocks;
 
     void Awake()
     {
@@ -36,7 +38,8 @@ public class GameManager : MonoBehaviour
         expInMeter = 0;
         level +=1;
         UIManager.Instance.expMeter.SetStat(expInMeter);
-        UnlockItem();
+
+        UnlockItem(NextUnlock);
 
         if (expToAdd != 0)
         {
@@ -44,9 +47,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UnlockItem()
+    public void UnlockItem(int toUnlock)
     {
-        UpgradeMaxBreath();
+        if(toUnlock == 1)
+        {
+            UpgradeMaxBreath();
+        }
+        if(toUnlock == 2)
+        {
+            UnlockBoost();
+        }
+    }
+
+    void UnlockBoost()
+    {
+        player.boostUnlocked = true;
     }
 
     public void UpgradeMaxBreath()
