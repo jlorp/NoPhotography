@@ -22,14 +22,17 @@ public class UIManager : MonoBehaviour
     public float minFov = 50;
     public float maxFov = 30;
 
+    public static bool cameraIsOpen = false;
+
 
     [Header("Pause Menu")]
 
     public GameObject pauseMenuUI;
     public GameObject goalListParent;
+    public RectTransform goalRect;
+    float goalRectYStart;
 
     public static bool gameIsPaused = false;
-    public static bool cameraIsOpen = false;
 
     [Header("Popup")]
     public GameObject popupUiTransform;
@@ -55,11 +58,17 @@ public class UIManager : MonoBehaviour
     [Header("Unlock Item")]
     public ItemUnlockUI _itemUI;
 
+    [Header("Input Prompts")]
+    public GameObject openCameraPrompt;
+    public GameObject closeCameraPrompt;
+    public GameObject snapPhotoPrompt;
+
     bool inStartMenu = true;
 
     void Awake()
     {
         Instance = this;
+        goalRectYStart = goalRect.rect.position.y;
     }
 
     public void CloseStartMenu()
@@ -67,6 +76,9 @@ public class UIManager : MonoBehaviour
         inStartMenu = false;
         startMenuParent.SetActive(false);
         breathParent.SetActive(true);
+        pauseMenuUI.SetActive(true);
+        openCameraPrompt.SetActive(true);
+        
         CloseCamera();
     }
 
@@ -112,9 +124,8 @@ public class UIManager : MonoBehaviour
 
     void Resume()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1;
         gameIsPaused = false;
+        goalRect.position = new Vector2(goalRect.rect.position.x, goalRectYStart);
     }
 
     public void AddInteractPrompt(string _text)
@@ -129,9 +140,9 @@ public class UIManager : MonoBehaviour
 
     void Pause()
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0;
         gameIsPaused = true;
+        float goalHeightAmount = (25 + 5) * goalListParent.transform.childCount;
+        goalRect.position = new Vector2(goalRect.rect.position.x, goalRectYStart + 100);
     }
 
 
@@ -243,6 +254,10 @@ public class UIManager : MonoBehaviour
     {
         if(inStartMenu) return;
 
+        openCameraPrompt.SetActive(false);
+        closeCameraPrompt.SetActive(true);
+
+        pauseMenuUI.SetActive(false);
         cameraUIParent.SetActive(true);
         breathParent.SetActive(false);
         Camera.main.fieldOfView = maxFov;
@@ -254,6 +269,10 @@ public class UIManager : MonoBehaviour
 
     public void CloseCamera()
     {
+        openCameraPrompt.SetActive(true);
+        closeCameraPrompt.SetActive(false);
+
+        pauseMenuUI.SetActive(true);
         OrbitCamera.Instance.ForceFlattenTilt();
         cameraUIParent.SetActive(false);
         breathParent.SetActive(true);
