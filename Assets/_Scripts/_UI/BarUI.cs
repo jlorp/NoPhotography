@@ -24,7 +24,7 @@ public class BarUI : MonoBehaviour
         maxStat = _maxStat;
     }
 
-    public void StartLerpStat(float amountToAdd, float lerpSpeed, bool isExpBar)
+    public void StartLerpStat(float amountToAdd, float lerpSpeed, bool isExpBar, bool triggerLevelUp)
     {
         if(amountToAdd == 0)
         {
@@ -32,10 +32,10 @@ public class BarUI : MonoBehaviour
             return;
         }
 
-        StartCoroutine(LerpBar(amountToAdd, lerpSpeed, isExpBar));
+        StartCoroutine(LerpBar(amountToAdd, lerpSpeed, isExpBar, triggerLevelUp));
     }
 
-    IEnumerator LerpBar(float amountToadd, float lerpSpeed, bool isExpBar)
+    IEnumerator LerpBar(float amountToadd, float lerpSpeed, bool isExpBar, bool triggerLevelUp)
     {
         float time = 0f;
         float duration = (amountToadd/maxStat) * lerpSpeed;
@@ -52,15 +52,17 @@ public class BarUI : MonoBehaviour
 
         if(isExpBar)
         {
-            if(GameManager.Instance.expInMeter >= GameManager.Instance.expPerLevel)
+            if(triggerLevelUp)
             {
                 int _level = GameManager.Instance.level;
                 RewardData levelReward = GameManager.Instance.LevelUnlocks[_level];
                 UIManager.Instance._itemUI.PlayAnimation(levelReward);
+                Debug.Log("should trigger");
             }
             else
             {
                 GameManager.Instance.OnDoneAddingExperience();
+                Debug.Log("ended loop");
             }
         }
     }

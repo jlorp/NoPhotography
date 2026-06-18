@@ -41,10 +41,9 @@ public class GameManager : MonoBehaviour
 
         UnlockItem(NextUnlock);
 
-        if (expToAdd != 0)
-        {
-           AddExperience(0);
-        }
+        
+        AddExperience(0);
+        
     }
 
     public void UnlockItem(int toUnlock)
@@ -76,18 +75,18 @@ public class GameManager : MonoBehaviour
 
         expToAdd += _expToadd;
         float expToNextLevel = expPerLevel - expInMeter;
-      
-        if (expToAdd >= expToNextLevel)
+        
+        if (expToAdd  >= expToNextLevel)
         {
-            UIManager.Instance.expMeter.StartLerpStat(expToNextLevel, 2, true);
-            expToAdd -= expToNextLevel;
+            UIManager.Instance.expMeter.StartLerpStat(expToNextLevel, 2, true, true);
             expInMeter += expToNextLevel;
+            expToAdd -= expToNextLevel;
         }
         else
         {
-            UIManager.Instance.expMeter.StartLerpStat(expToAdd, 2,true);
-            expToAdd -= expToAdd;
+            UIManager.Instance.expMeter.StartLerpStat(expToAdd, 2,true , false);
             expInMeter += expToAdd;
+            expToAdd -= expToAdd;
         }
     }
 
