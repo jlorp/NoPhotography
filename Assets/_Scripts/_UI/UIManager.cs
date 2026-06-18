@@ -128,6 +128,14 @@ public class UIManager : MonoBehaviour
         goalRect.position = new Vector2(goalRect.rect.position.x, goalRectYStart);
     }
 
+    void Pause()
+    {
+        gameIsPaused = true;
+        float goalCount = GoalManager.Instance.Goals.Count + GoalManager.Instance.HeldGoals.Count;
+        float goalHeightAmount = (25 + 10) * goalCount;
+        goalRect.position = new Vector2(goalRect.rect.position.x, goalRectYStart + goalHeightAmount);
+    }
+
     public void AddInteractPrompt(string _text)
     {
         _interactPrompt.AddPrompt(_text);
@@ -138,12 +146,6 @@ public class UIManager : MonoBehaviour
         _interactPrompt.RemovePrompt();
     }
 
-    void Pause()
-    {
-        gameIsPaused = true;
-        float goalHeightAmount = (25 + 5) * goalListParent.transform.childCount;
-        goalRect.position = new Vector2(goalRect.rect.position.x, goalRectYStart + 100);
-    }
 
 
     public void Popup(string newtext, int _color)

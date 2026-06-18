@@ -24633,6 +24633,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameLogic
       objectReference: {fileID: 0}
+    - target: {fileID: 653060275832483269, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 653060275832483269, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 653060275832483269, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 97.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 653060275832483269, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246943125363896483, guid: e65073049ec8db8498111f86499cd46b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1792003008718077871, guid: e65073049ec8db8498111f86499cd46b, type: 3}
       propertyPath: player
       value: 

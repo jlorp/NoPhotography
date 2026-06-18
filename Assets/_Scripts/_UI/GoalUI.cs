@@ -19,10 +19,15 @@ public class GoalUI : MonoBehaviour
 
     public void CompleteGoal()
     {
+        Destroy(this.gameObject);
+    }
+
+    public void MarkGoalHeld()
+    {
         background.enabled = true;
     }
 
-    void UncheckGoal()
+    public void UncheckGoal()
     {
         background.enabled = false;
     }

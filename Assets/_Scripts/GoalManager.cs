@@ -102,6 +102,7 @@ public class GoalManager : MonoBehaviour
     {
         Goals.Remove(heldGoal);
         HeldGoals.Add(heldGoal);
+        AdjustGoal(heldGoal,1);
         UIManager.Instance.Popup("Goal Held: " + heldGoal.GoalName, 1);
     }
 
@@ -135,9 +136,13 @@ public class GoalManager : MonoBehaviour
                         //Wallet.Instance.AddCash(_goal.cashReward);   
                         expToAdd += _goal.cashReward;
                     }
+                    else if (_status == 1)
+                    {
+                        _ui.MarkGoalHeld();
+                    }
                     if(_status == 0)
                     {
-
+                        _ui.UncheckGoal();
                     }
                 }
             }
