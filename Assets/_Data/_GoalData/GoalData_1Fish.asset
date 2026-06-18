@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4c027b6ac29be4b9cb54b4d7c6cc48, type: 3}
   m_Name: GoalData_1Fish
   m_EditorClassIdentifier: 
-  GoalName: A Fish
+  GoalName: A School of Fish
   RequiredPhotoContents:
   - {fileID: 11400000, guid: bc02cace748c06645a54c71dbb4d50d9, type: 2}
-  cashReward: 100
+  - {fileID: 11400000, guid: bc02cace748c06645a54c71dbb4d50d9, type: 2}
+  - {fileID: 11400000, guid: bc02cace748c06645a54c71dbb4d50d9, type: 2}
+  - {fileID: 11400000, guid: bc02cace748c06645a54c71dbb4d50d9, type: 2}
+  - {fileID: 11400000, guid: bc02cace748c06645a54c71dbb4d50d9, type: 2}
+  - {fileID: 11400000, guid: bc02cace748c06645a54c71dbb4d50d9, type: 2}
+  - {fileID: 11400000, guid: bc02cace748c06645a54c71dbb4d50d9, type: 2}
+  cashReward: 50

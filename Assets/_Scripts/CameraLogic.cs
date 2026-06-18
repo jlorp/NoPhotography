@@ -14,6 +14,7 @@ public class CameraLogic : MonoBehaviour
 	float viewfinderHeight;
 	Vector2 viewFinderCenter;
 	public Rect viewportRect;
+	public LayerMask CastMask;
 
 	void Start()
 	{
@@ -120,7 +121,7 @@ public class CameraLogic : MonoBehaviour
 				Vector3 point = cam.ScreenToWorldPoint(new Vector3(xPosition, yPosition, cam.nearClipPlane));
 				Vector3 direction = (point - cam.transform.position).normalized;
 
-				if(Physics.Raycast(point, direction, out hits[index], castDistance))
+				if(Physics.Raycast(point, direction, out hits[index], castDistance, CastMask))
 				{
 					//Debug.DrawRay(hits[index].point, -direction * hits[index].distance, Color.green, 2);
 				}
