@@ -57,12 +57,10 @@ public class BarUI : MonoBehaviour
                 int _level = GameManager.Instance.level;
                 RewardData levelReward = GameManager.Instance.LevelUnlocks[_level];
                 UIManager.Instance._itemUI.PlayAnimation(levelReward);
-                Debug.Log("should trigger");
             }
             else
             {
                 GameManager.Instance.OnDoneAddingExperience();
-                Debug.Log("ended loop");
             }
         }
     }
