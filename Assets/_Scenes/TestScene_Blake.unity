@@ -111513,7 +111513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4396291330134705665, guid: 059d3b0c6ff9e0f4d9a74ba766ac4d4a, type: 3}
       propertyPath: maxBreathCapacity
-      value: 100
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6092794804078955921, guid: 059d3b0c6ff9e0f4d9a74ba766ac4d4a, type: 3}
       propertyPath: photoDisplayArea
