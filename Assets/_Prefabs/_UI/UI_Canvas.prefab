@@ -1169,10 +1169,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6868370595394558737}
     m_Modifications:
-    - target: {fileID: 525359836442133061, guid: 77342f0e6f543a24c88ccff81283fab8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3441544647144047198, guid: 77342f0e6f543a24c88ccff81283fab8, type: 3}
       propertyPath: m_Name
       value: UI_Camera
@@ -1480,7 +1476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7869063005976368852, guid: 5771408a5f406f24684e106a32a75fda, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -83.01001
+      value: -22.41
       objectReference: {fileID: 0}
     - target: {fileID: 7869063005976368852, guid: 5771408a5f406f24684e106a32a75fda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

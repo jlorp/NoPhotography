@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c878f807ae13f3949a478870b09981dd, type: 3}
-  m_Name: DogRock
+  m_Script: {fileID: 11500000, guid: 6b4c027b6ac29be4b9cb54b4d7c6cc48, type: 3}
+  m_Name: GoalData_Buoy
   m_EditorClassIdentifier: 
-  ItemName: The Great Dog  Rock
+  GoalName: Buoy
+  RequiredPhotoContents:
+  - {fileID: 11400000, guid: 0dbefcb729a05db439c010a839842b0e, type: 2}
+  cashReward: 50

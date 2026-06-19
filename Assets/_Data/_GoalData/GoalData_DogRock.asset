@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoalName: The Great Dog Rock
   RequiredPhotoContents:
-  - {fileID: 11400000, guid: 0dbefcb729a05db439c010a839842b0e, type: 2}
+  - {fileID: 11400000, guid: e31c07f22843f9747b6dc4e1860d6e60, type: 2}
   cashReward: 50
