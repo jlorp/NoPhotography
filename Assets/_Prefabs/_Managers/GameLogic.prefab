@@ -371,6 +371,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Goals
       objectReference: {fileID: 0}
+    - target: {fileID: 8611862163395367488, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611862163395367488, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611862163395367488, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611862163395367488, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611862163395367488, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -389
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611862163395367488, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

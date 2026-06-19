@@ -1309,10 +1309,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_InteractPrompt
       objectReference: {fileID: 0}
-    - target: {fileID: 4504782259263077921, guid: 74026222edd3ab14d8f31a119dfa8525, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7662822440257760768, guid: 74026222edd3ab14d8f31a119dfa8525, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
