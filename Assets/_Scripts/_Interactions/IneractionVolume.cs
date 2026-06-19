@@ -20,7 +20,7 @@ public class IneractionVolume : MonoBehaviour
 
             if (_player.body.isKinematic) return;
             isActive = true;
-            UIManager.Instance.AddInteractPrompt("Press Action to Dock");
+            UIManager.Instance.AddInteractPrompt("   to dock Sub");
         }
     }
 

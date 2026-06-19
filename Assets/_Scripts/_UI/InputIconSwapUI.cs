@@ -35,6 +35,7 @@ public class InputIconSwapUI : MonoBehaviour
     public Image thrustImage;
     public Image boostImage;
     public Image introImage;
+    public Image interactImage;
 
 
     private void OnEnable()
@@ -64,7 +65,7 @@ public class InputIconSwapUI : MonoBehaviour
         takePhotoImage.sprite = takePhotoSpriteX;
         zoomImage.sprite = zoomSpriteX;
         thrustImage.sprite = thrustSpriteX;
-        boostImage.sprite = boostSpriteX;
+        interactImage.sprite = boostImage.sprite = boostSpriteX;
     }
 
     void SetKeyboardGlyphs()
@@ -75,7 +76,7 @@ public class InputIconSwapUI : MonoBehaviour
         takePhotoImage.sprite = takePhotoSpritePC;
         zoomImage.sprite = zoomSpritePC;
         thrustImage.sprite = thrustSpritePC;
-        boostImage.sprite = boostSpritePC;
+        interactImage.sprite = boostImage.sprite = boostSpritePC;
     }
 
     private void HandleActionChange(object obj, InputActionChange change)

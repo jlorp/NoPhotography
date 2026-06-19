@@ -27,7 +27,6 @@ public class BreathLogic : MonoBehaviour
     void FixedUpdate()
     {
         UIManager.Instance.breathMeter.SetStat(breathRemaining);
-        Debug.Log(_player.Swimming);
         if( breathRemaining > 0 && _player.playerInput.z > 0 && !_player.body.isKinematic && !_player.CameraOpen)
         {
             breathRemaining -= Time.deltaTime * _player.playerInput.z;
