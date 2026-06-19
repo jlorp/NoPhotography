@@ -95,7 +95,7 @@ public class GoalManager : MonoBehaviour
     {
         Goals.Add(failedGoal);
         AdjustGoal(failedGoal, 0);
-        UIManager.Instance.Popup("Goal Failed: " + failedGoal.GoalName, 0);
+        UIManager.Instance.Popup("Goal Lost: Did not return to Boat", 0, 5);
     }
 
     void HoldGoal(GoalData heldGoal)
@@ -103,7 +103,7 @@ public class GoalManager : MonoBehaviour
         Goals.Remove(heldGoal);
         HeldGoals.Add(heldGoal);
         AdjustGoal(heldGoal,1);
-        UIManager.Instance.Popup("Goal Held: " + heldGoal.GoalName, 1);
+        UIManager.Instance.Popup("Goal Held: " + heldGoal.GoalName, 1, 3);
     }
 
     void CompleteGoal(GoalData finishedGoal)
@@ -112,7 +112,7 @@ public class GoalManager : MonoBehaviour
 
         FinishedGoals.Add(finishedGoal);
         
-        UIManager.Instance.Popup("Goal Complete: " + finishedGoal.GoalName, 2);
+        UIManager.Instance.Popup("Goals Redeemed", 2, 4);
         AdjustGoal(finishedGoal, 2);
     }
 

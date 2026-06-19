@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Start Menu")]
     public GameObject startMenuParent;
+    public IntroUI introUI;
 
     [Header("Camera Menu")]
 
@@ -150,13 +151,11 @@ public class UIManager : MonoBehaviour
         _interactPrompt.RemovePrompt();
     }
 
-
-
-    public void Popup(string newtext, int _color)
+    public void Popup(string newtext, int _color, float duration)
     {
         popupUiTransform.SetActive(true);
         _popupUI.UpdatePopupText(newtext, _color);
-        StartCoroutine(HideGameObjectAfterDelay(popupUiTransform,3f));
+        StartCoroutine(HideGameObjectAfterDelay(popupUiTransform, duration));
     }
 
     public void TakePicture()

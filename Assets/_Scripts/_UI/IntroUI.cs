@@ -10,6 +10,9 @@ public class IntroUI : MonoBehaviour
     Color textColor;
     public GameObject startPrompt;
     bool startReady = false;
+    
+    public bool introDone= false;
+    
 
     void Start()
     {
@@ -24,17 +27,17 @@ public class IntroUI : MonoBehaviour
 
     public void CloseIntro()
     {
-        if(!startReady) return;
+        if(!startReady || introDone) return;
 
         StartCoroutine(TextFadeOut(1f));
         UIManager.Instance.IntroFade();
 
-        this.gameObject.SetActive(false);
+        startPrompt.SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Shutter") || Input.GetButtonDown("Shutter Mouse") || Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Shutter") || Input.GetButtonDown("Shutter Mouse"))
         {
             CloseIntro();
         }
@@ -55,6 +58,7 @@ public class IntroUI : MonoBehaviour
         }
         textColor.a = 0;
         introText.color = textColor;
+        introDone=true;
     }
 
     IEnumerator TextFadeIn(float duration)

@@ -22,7 +22,7 @@ public class ClawLogic : MonoBehaviour
 
     void Update()
     {
-        if(startState && Input.GetButtonDown("Jump"))
+        if(startState && Input.GetButtonDown("Jump") && UIManager.Instance.introUI.introDone)
         {
             DropClaw();
             startState = false;
