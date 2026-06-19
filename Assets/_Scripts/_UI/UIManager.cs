@@ -82,6 +82,11 @@ public class UIManager : MonoBehaviour
         CloseCamera();
     }
 
+    public void IntroFade()
+    {
+        StartCoroutine(DeathFlash(1.5f, 0,false, 0.25f));
+    }
+
     void Start()
     {
         if(skipStartup)
@@ -98,7 +103,6 @@ public class UIManager : MonoBehaviour
         {
             _player.isHeldByClaw = true;
             breathParent.SetActive(false);
-            StartCoroutine(DeathFlash(1.5f, 0,false, 0.25f));
         }
 
         expParent.SetActive(false);
