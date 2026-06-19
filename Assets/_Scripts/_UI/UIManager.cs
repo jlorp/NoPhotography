@@ -85,7 +85,12 @@ public class UIManager : MonoBehaviour
 
     public void IntroFade()
     {
-        StartCoroutine(DeathFlash(1.5f, 0,false, 0.25f));
+        StartCoroutine(DeathFlash(1.5f, 0,false, .5f));
+    }
+
+    public void EndFade()
+    {
+        StartCoroutine(DeathFlash(1f, 1, false, 0f));
     }
 
     void Start()

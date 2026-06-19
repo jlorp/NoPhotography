@@ -112,8 +112,11 @@ public class GoalManager : MonoBehaviour
 
         FinishedGoals.Add(finishedGoal);
         
-        UIManager.Instance.Popup("Goals Redeemed", 2, 4);
+        //UIManager.Instance.Popup("Goals Redeemed", 2, 4);
         AdjustGoal(finishedGoal, 2);
+
+        if(Goals.Count == 0)
+        UIManager.Instance.introUI.EndGamePopup();
     }
 
     void AdjustGoal(GoalData _goal, int _status)

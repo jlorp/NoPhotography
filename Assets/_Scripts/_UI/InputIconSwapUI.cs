@@ -34,6 +34,7 @@ public class InputIconSwapUI : MonoBehaviour
     public Image zoomImage;
     public Image thrustImage;
     public Image boostImage;
+    public Image introImage;
 
 
     private void OnEnable()
@@ -57,7 +58,7 @@ public class InputIconSwapUI : MonoBehaviour
 
     void SetXboxGlyphs()
     {
-        openCameraImage.sprite = closeCameraImage.sprite = openCloseCameraSpriteX;
+        introImage.sprite = openCameraImage.sprite = closeCameraImage.sprite = openCloseCameraSpriteX;
         pauseImage.sprite = pauseSpriteX;
         actionImage.sprite = actionSpriteX;
         takePhotoImage.sprite = takePhotoSpriteX;
@@ -94,8 +95,6 @@ public class InputIconSwapUI : MonoBehaviour
             newDeviceType = "Xbox";
         else if (deviceName.Contains("Switch") || deviceName.Contains("DualMuck"))
             newDeviceType = "Nintendo";
-        else 
-            Debug.Log("keyboard");
 
         if (newDeviceType != CurrentDeviceType)
         {

@@ -115,7 +115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introText: {fileID: 8165783238610689365}
+  promptText: {fileID: 4285603366994169280}
   startPrompt: {fileID: 5548481420205338130}
+  introDone: 0
 --- !u!1 &468069577782147508
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +394,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1310689404, guid: f686f479bf99e864bbe229810967f13f, type: 3}
+  m_Sprite: {fileID: -900430592, guid: f686f479bf99e864bbe229810967f13f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

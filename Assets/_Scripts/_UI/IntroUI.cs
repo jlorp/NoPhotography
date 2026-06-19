@@ -6,13 +6,32 @@ using TMPro;
 
 public class IntroUI : MonoBehaviour
 {
-    public TextMeshProUGUI introText;
+    public TextMeshProUGUI introText, promptText;
     Color textColor;
     public GameObject startPrompt;
     bool startReady = false;
+    bool endReady=false;
     
     public bool introDone= false;
     
+    public void EndGamePopup()
+    {
+        StartCoroutine(TextFadeIn(1.5f, true));
+        introText.text = "You found all the Items! Thanks for Playing!";
+        promptText.text = "  end game";
+        UIManager.Instance.EndFade();
+    }
+
+    void CloseGame()
+    {
+        if(!endReady) return;
+        
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+    }
 
     void Start()
     {
@@ -37,9 +56,10 @@ public class IntroUI : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Shutter") || Input.GetButtonDown("Shutter Mouse"))
+        if (Input.GetButtonDown("Open Camera"))
         {
             CloseIntro();
+            CloseGame();
         }
     }
 
@@ -61,7 +81,7 @@ public class IntroUI : MonoBehaviour
         introDone=true;
     }
 
-    IEnumerator TextFadeIn(float duration)
+    IEnumerator TextFadeIn(float duration, bool _endReady=false)
     {
         float time = 0f;
         yield return null; 
@@ -79,5 +99,7 @@ public class IntroUI : MonoBehaviour
 
         startPrompt.SetActive(true);
         startReady=true;
+
+        if (_endReady) endReady = true;
     }
 }

@@ -22806,6 +22806,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestMarker
       objectReference: {fileID: 0}
+    - target: {fileID: 1762455127193081772, guid: 779043f041c3e0c459210822fa782a08, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24811,30 +24815,6 @@ PrefabInstance:
     - target: {fileID: 8211398074969631284, guid: e65073049ec8db8498111f86499cd46b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9088905439193110593, guid: e65073049ec8db8498111f86499cd46b, type: 3}
-      propertyPath: failColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9088905439193110593, guid: e65073049ec8db8498111f86499cd46b, type: 3}
-      propertyPath: failColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9088905439193110593, guid: e65073049ec8db8498111f86499cd46b, type: 3}
-      propertyPath: failColor.r
-      value: 0.4528302
-      objectReference: {fileID: 0}
-    - target: {fileID: 9088905439193110593, guid: e65073049ec8db8498111f86499cd46b, type: 3}
-      propertyPath: heldColor.b
-      value: 0.17030083
-      objectReference: {fileID: 0}
-    - target: {fileID: 9088905439193110593, guid: e65073049ec8db8498111f86499cd46b, type: 3}
-      propertyPath: heldColor.g
-      value: 0.56638277
-      objectReference: {fileID: 0}
-    - target: {fileID: 9088905439193110593, guid: e65073049ec8db8498111f86499cd46b, type: 3}
-      propertyPath: heldColor.r
-      value: 0.8396226
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
