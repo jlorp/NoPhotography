@@ -216,6 +216,8 @@ public class MovingSphere : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		
+		SoundManager.Instance.MotorSound(playerInput.z);
 
 		if(body.isKinematic)
 		{

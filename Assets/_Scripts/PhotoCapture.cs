@@ -15,6 +15,7 @@ public class PhotoCapture : MonoBehaviour
     {
         screenCapture = new Texture2D((int)viewportRect.width, (int)viewportRect.height, TextureFormat.RGB24, false);
         StartCoroutine(CapturePhoto(viewportRect));
+        SoundManager.Instance.PlaySound(SoundManager.Instance.shutterSound, new Vector2(0.95f,1.5f));
     }
 
     IEnumerator CapturePhoto(Rect viewportRect)

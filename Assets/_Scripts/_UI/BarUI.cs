@@ -54,6 +54,7 @@ public class BarUI : MonoBehaviour
         {
             if(triggerLevelUp)
             {
+                SoundManager.Instance.PlaySound(SoundManager.Instance.dingSound, new Vector2(0.97f,1.2f));
                 int _level = GameManager.Instance.level;
                 RewardData levelReward = GameManager.Instance.LevelUnlocks[_level];
                 UIManager.Instance._itemUI.PlayAnimation(levelReward);

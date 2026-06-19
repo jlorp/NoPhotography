@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
 
         UnlockItem(NextUnlock);
 
-        
         AddExperience(0);
         
     }

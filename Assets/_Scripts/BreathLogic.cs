@@ -59,6 +59,8 @@ public class BreathLogic : MonoBehaviour
         _player.drowning = true;
         UIManager.Instance.BlackFade();
         GoalManager.Instance.FailGoals();
+
+        SoundManager.Instance.PlaySound(SoundManager.Instance.explosionSound, new Vector2(0.95f,1.5f));
     }
 
     public void ResetBreath()
@@ -67,8 +69,10 @@ public class BreathLogic : MonoBehaviour
         _player.drowning = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void Bonk(Collision collision)
     {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.bonkSound, new Vector2(0.95f,1.5f));
+
         _animation.Play("Player_WiggleDamage", PlayMode.StopAll); 
         Vector3 hitNormal = collision.contacts[0].normal;
         float forceMagnitude = _player.body.velocity.magnitude;
@@ -76,6 +80,11 @@ public class BreathLogic : MonoBehaviour
         _player.LockInput();
         _player.body.AddForce( hitNormal * forceMagnitude * 2, ForceMode.Impulse);
         breathRemaining -= forceMagnitude * 1.33f;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Bonk(collision);
 
         if(breathRemaining <= 0)
         {
