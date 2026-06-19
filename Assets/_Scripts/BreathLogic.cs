@@ -27,8 +27,8 @@ public class BreathLogic : MonoBehaviour
     void FixedUpdate()
     {
         UIManager.Instance.breathMeter.SetStat(breathRemaining);
-        
-        if(_player.Swimming && breathRemaining > 0 && _player.playerInput.z > 0 && !_player.body.isKinematic && !_player.CameraOpen)
+        Debug.Log(_player.Swimming);
+        if( breathRemaining > 0 && _player.playerInput.z > 0 && !_player.body.isKinematic && !_player.CameraOpen)
         {
             breathRemaining -= Time.deltaTime * _player.playerInput.z;
             breathRemaining = Mathf.Clamp( breathRemaining ,0 , maxBreathCapacity );
@@ -67,6 +67,7 @@ public class BreathLogic : MonoBehaviour
     {
         breathRemaining = maxBreathCapacity;
         _player.drowning = false;
+        UIManager.Instance.breathMeter.CorrectAllMeters();
     }
 
     void Bonk(Collision collision)

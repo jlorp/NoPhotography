@@ -11,6 +11,7 @@ public class IntroUI : MonoBehaviour
     public GameObject startPrompt;
     bool startReady = false;
     bool endReady=false;
+    bool introtriggered = false;
     
     public bool introDone= false;
     
@@ -46,7 +47,10 @@ public class IntroUI : MonoBehaviour
 
     public void CloseIntro()
     {
-        if(!startReady || introDone) return;
+        if(!startReady || introDone || introtriggered) return;
+        introtriggered = true;
+        UIManager.Instance.breathMeter.CorrectAllMeters();
+        UIManager.Instance.breathParent.SetActive(false);
 
         StartCoroutine(TextFadeOut(1f));
         UIManager.Instance.IntroFade();

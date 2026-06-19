@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
         else
         {
             _player.isHeldByClaw = true;
-            breathParent.SetActive(false);
+            //breathParent.SetActive(false);
         }
 
         expParent.SetActive(false);

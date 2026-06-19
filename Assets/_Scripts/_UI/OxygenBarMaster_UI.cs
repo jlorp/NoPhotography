@@ -21,6 +21,15 @@ public class OxygenBarMaster_UI : MonoBehaviour
         width = bkg.sizeDelta.x;
     }
 
+    public void CorrectAllMeters()
+    {
+        for(int i = 0 ; i <EBars.Count; i++)
+        {
+            EBars[i].SetMaxStat(breathPerMeter);
+            EBars[i].SetStat(breathPerMeter);
+        }
+    }
+
     void Start()
     {
         breathPerMeter = GameManager.Instance.player._breath.breathCapacityPerUnit;
