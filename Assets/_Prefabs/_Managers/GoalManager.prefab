@@ -50,8 +50,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c4e555d71cf2d9548b09610eee536f4d, type: 2}
   - {fileID: 11400000, guid: cff743b5cf36cfa47a1f32e3c9a61ded, type: 2}
   - {fileID: 11400000, guid: c98fb68aa4f49524b9e3d472b590c77d, type: 2}
-  - {fileID: 11400000, guid: 50fe90d177f9aae48b66c7fe45499c5b, type: 2}
   - {fileID: 11400000, guid: 91a23cb4589bc8c4ea20aa971cb0144a, type: 2}
+  - {fileID: 11400000, guid: 50fe90d177f9aae48b66c7fe45499c5b, type: 2}
   HeldGoals: []
   FinishedGoals: []
   emptyGoalPrefab: {fileID: 2047131052853389749, guid: 6b5447692df60a146be68f933efad807, type: 3}
