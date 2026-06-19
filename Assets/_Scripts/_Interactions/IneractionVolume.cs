@@ -71,7 +71,7 @@ public class IneractionVolume : MonoBehaviour
         OrbitCamera.Instance.DeactivateCamera();
         OrbitCamera.Instance.GoToStartPosition();
 
-        UIManager.Instance.openCameraPrompt.SetActive(false);
+        UIManager.Instance.subControlPrompts.SetActive(false);
 		UIManager.Instance.pauseMenuUI.SetActive(false);
     }
 }

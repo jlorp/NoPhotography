@@ -208,6 +208,9 @@ public class OrbitCamera : MonoBehaviour {
 			-Input.GetAxisRaw("Tilt") * .5f
 		);
 
+		bool lockTilt = true;
+		if(lockTilt)input.z=0;
+
 		const float e = 0.001f;
 		if (input.x < -e || input.x > e || input.y < -e || input.y > e || input.z > e || input.z < -e || desiresFlatTilt) {
 			orbitAngles += rotationSpeed * Time.unscaledDeltaTime * input;

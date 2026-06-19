@@ -33,8 +33,6 @@ public class ClawLogic : MonoBehaviour
     {
         _animaiton.Play("SubDrop");
         _player.transform.localPosition = Vector3.zero;
-        UIManager.Instance.openCameraPrompt.SetActive(false);
-		UIManager.Instance.pauseMenuUI.SetActive(false);
     }
 
     void ReturnGoals()

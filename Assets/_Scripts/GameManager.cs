@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     void UnlockBoost()
     {
         player.boostUnlocked = true;
+        UIManager.Instance.UnlockBoost();
     }
 
     public void UpgradeMaxBreath()

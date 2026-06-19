@@ -59,7 +59,8 @@ public class UIManager : MonoBehaviour
     public ItemUnlockUI _itemUI;
 
     [Header("Input Prompts")]
-    public GameObject openCameraPrompt;
+    public GameObject subControlPrompts;
+    public GameObject boostPrompt;
     public GameObject closeCameraPrompt;
     public GameObject snapPhotoPrompt;
 
@@ -77,7 +78,7 @@ public class UIManager : MonoBehaviour
         startMenuParent.SetActive(false);
         breathParent.SetActive(true);
         pauseMenuUI.SetActive(true);
-        openCameraPrompt.SetActive(true);
+        subControlPrompts.SetActive(true);
         
         CloseCamera();
     }
@@ -133,7 +134,7 @@ public class UIManager : MonoBehaviour
         gameIsPaused = true;
         float goalCount = GoalManager.Instance.Goals.Count + GoalManager.Instance.HeldGoals.Count;
         float goalHeightAmount = (25 + 10) * goalCount;
-        goalRect.position = new Vector2(goalRect.rect.position.x, goalRectYStart + goalHeightAmount);
+        goalRect.anchoredPosition = new Vector2(goalRect.rect.position.x, goalRectYStart + goalHeightAmount);
     }
 
     public void AddInteractPrompt(string _text)
@@ -243,6 +244,11 @@ public class UIManager : MonoBehaviour
         StartCoroutine(HideGameObjectAfterDelay(photoParent,1.5f));
     }
 
+    public void UnlockBoost()
+    {
+        boostPrompt.SetActive(true);
+    }
+    
     public void Zoom(float inOut)
     {
         if(inOut == 0) return;
@@ -256,7 +262,7 @@ public class UIManager : MonoBehaviour
     {
         if(inStartMenu) return;
 
-        openCameraPrompt.SetActive(false);
+        subControlPrompts.SetActive(false);
         closeCameraPrompt.SetActive(true);
 
         pauseMenuUI.SetActive(false);
@@ -277,7 +283,7 @@ public class UIManager : MonoBehaviour
 
         if(!_player.isHeldByClaw)
         {
-            openCameraPrompt.SetActive(true);
+            subControlPrompts.SetActive(true);
             pauseMenuUI.SetActive(true);
         }
         breathParent.SetActive(true);
