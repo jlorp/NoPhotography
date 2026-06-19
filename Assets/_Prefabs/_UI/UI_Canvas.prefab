@@ -1995,6 +1995,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4257800676048271993, guid: e003e8d8fa34252419bc22c76306ad76, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257800676048271993, guid: e003e8d8fa34252419bc22c76306ad76, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257800676048271993, guid: e003e8d8fa34252419bc22c76306ad76, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 97.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257800676048271993, guid: e003e8d8fa34252419bc22c76306ad76, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6448238032852317710, guid: e003e8d8fa34252419bc22c76306ad76, type: 3}
       propertyPath: m_Pivot.x
       value: 0

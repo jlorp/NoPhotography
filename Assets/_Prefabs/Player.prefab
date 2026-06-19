@@ -5057,6 +5057,7 @@ MonoBehaviour:
   CameraOpen: 0
   drowning: 0
   boostUnlocked: 0
+  boostCost: 3
   boostAmount: 15
   desiredBoost: 0
   boosting: 0

@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Goals:
-  - {fileID: 11400000, guid: c4e555d71cf2d9548b09610eee536f4d, type: 2}
   - {fileID: 11400000, guid: 54e23a41a643d5547874f09f2a7fd0d9, type: 2}
   - {fileID: 11400000, guid: da867e810d7e6234daadcad6d517e71c, type: 2}
+  - {fileID: 11400000, guid: c4e555d71cf2d9548b09610eee536f4d, type: 2}
+  - {fileID: 11400000, guid: cff743b5cf36cfa47a1f32e3c9a61ded, type: 2}
+  HeldGoals: []
   FinishedGoals: []
   emptyGoalPrefab: {fileID: 2047131052853389749, guid: 6b5447692df60a146be68f933efad807, type: 3}

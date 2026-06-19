@@ -80,7 +80,7 @@ public class MovingSphere : MonoBehaviour {
 	[Header("Boost")]
 
 	public bool boostUnlocked = true;
-
+	public float boostCost;
 	public float boostAmount = 10f;
 
 	[HideInInspector]
@@ -210,7 +210,7 @@ public class MovingSphere : MonoBehaviour {
 		velocity += submarine.forward * boostAmount;
 		velocity = Vector3.ClampMagnitude(velocity, 20f);
 		OrbitCamera.Instance.CameraBoostLag( 1f , -0.5f, 20);
-		_breath.RemoveBreath(5f);
+		_breath.RemoveBreath(boostCost);
 	}
 
 	void FixedUpdate () {

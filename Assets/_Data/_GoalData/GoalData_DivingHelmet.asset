@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b4c027b6ac29be4b9cb54b4d7c6cc48, type: 3}
-  m_Name: GoalData_4 farts
+  m_Name: GoalData_DivingHelmet
   m_EditorClassIdentifier: 
-  GoalName: 4 Farts
+  GoalName: Diving Helmet
   RequiredPhotoContents:
-  - {fileID: 11400000, guid: b051db05aa4c4154ca190e5e7039523a, type: 2}
-  - {fileID: 11400000, guid: b051db05aa4c4154ca190e5e7039523a, type: 2}
-  - {fileID: 11400000, guid: b051db05aa4c4154ca190e5e7039523a, type: 2}
-  - {fileID: 11400000, guid: b051db05aa4c4154ca190e5e7039523a, type: 2}
-  cashReward: 200
+  - {fileID: 11400000, guid: 47cbfe1ce57202949a4eea9320df5c8a, type: 2}
+  cashReward: 50
