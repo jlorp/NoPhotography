@@ -54,13 +54,19 @@ MonoBehaviour:
   maxFov: 40
   pauseMenuUI: {fileID: 0}
   goalListParent: {fileID: 0}
+  goalRect: {fileID: 0}
   popupUiTransform: {fileID: 0}
   _popupUI: {fileID: 0}
   breathMeter: {fileID: 0}
   deathImage: {fileID: 0}
   breathParent: {fileID: 0}
   spawnpoint: {fileID: 0}
-  cashUI: {fileID: 0}
-  cashParent: {fileID: 0}
   _player: {fileID: 0}
   _interactPrompt: {fileID: 0}
+  expParent: {fileID: 0}
+  expMeter: {fileID: 0}
+  _itemUI: {fileID: 0}
+  subControlPrompts: {fileID: 0}
+  boostPrompt: {fileID: 0}
+  closeCameraPrompt: {fileID: 0}
+  cameraZoomPrompt: {fileID: 0}

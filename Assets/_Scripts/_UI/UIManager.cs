@@ -61,7 +61,6 @@ public class UIManager : MonoBehaviour
     [Header("Input Prompts")]
     public GameObject subControlPrompts;
     public GameObject boostPrompt;
-    public GameObject closeCameraPrompt;
     public GameObject cameraZoomPrompt;
 
     bool inStartMenu = true;
@@ -268,7 +267,6 @@ public class UIManager : MonoBehaviour
         if(inStartMenu) return;
 
         subControlPrompts.SetActive(false);
-        closeCameraPrompt.SetActive(true);
 
         pauseMenuUI.SetActive(false);
         cameraUIParent.SetActive(true);
@@ -282,7 +280,6 @@ public class UIManager : MonoBehaviour
 
     public void CloseCamera()
     {
-        closeCameraPrompt.SetActive(false);
         OrbitCamera.Instance.ForceFlattenTilt();
         cameraUIParent.SetActive(false);
 
