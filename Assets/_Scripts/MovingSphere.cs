@@ -90,6 +90,8 @@ public class MovingSphere : MonoBehaviour {
 	
 	[SerializeField]
 	CameraLogic _camera;
+	
+	public bool zoomUnlocked = false;
 
 	public BreathLogic _breath;
 

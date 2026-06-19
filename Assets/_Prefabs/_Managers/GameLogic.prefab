@@ -158,6 +158,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1100351530038100785}
     - target: {fileID: 8919939502673052007, guid: 4418366b91d7b744297e90d1b6baab99, type: 3}
+      propertyPath: cameraZoomPrompt
+      value: 
+      objectReference: {fileID: 3128665988865423403}
+    - target: {fileID: 8919939502673052007, guid: 4418366b91d7b744297e90d1b6baab99, type: 3}
       propertyPath: openCameraPrompt
       value: 
       objectReference: {fileID: 8425847573379464475}
@@ -359,6 +363,11 @@ GameObject:
 --- !u!224 &2498819427476721769 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6868370595394558737, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
+  m_PrefabInstance: {fileID: 9078357092735339384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3128665988865423403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6239610353740165971, guid: 3f1ff475998cf1e419e2e8977c51ea87, type: 3}
   m_PrefabInstance: {fileID: 9078357092735339384}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &3135926461747190885 stripped

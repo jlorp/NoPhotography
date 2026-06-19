@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
     public GameObject subControlPrompts;
     public GameObject boostPrompt;
     public GameObject closeCameraPrompt;
-    public GameObject snapPhotoPrompt;
+    public GameObject cameraZoomPrompt;
 
     bool inStartMenu = true;
 
@@ -248,7 +248,12 @@ public class UIManager : MonoBehaviour
     {
         boostPrompt.SetActive(true);
     }
-    
+
+    public void UnlockZoom()
+    {
+        cameraZoomPrompt.SetActive(true);
+    }
+
     public void Zoom(float inOut)
     {
         if(inOut == 0) return;

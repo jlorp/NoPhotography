@@ -36,14 +36,22 @@ public class CameraLogic : MonoBehaviour
 
 		viewportRect = new Rect(viewFinderCenter.x, viewFinderCenter.y, viewFinderWidth, Mathf.Abs(viewfinderHeight));
 	}
-
-    public void CameraControls()
+	
+	public void HandleZoom()
 	{
+		if(!GameManager.Instance.player.zoomUnlocked) return;
+
 		float zoomInput = Input.GetAxisRaw("CameraZoom");
 		UIManager.Instance.Zoom(zoomInput);
 
 		float zoomInputMouse = Input.GetAxisRaw("CameraZoomMouse");
 		UIManager.Instance.Zoom(zoomInputMouse * 30);
+	}
+
+    public void CameraControls()
+	{
+		HandleZoom();
+		
 
         float shutterAxis = Input.GetAxisRaw("Shutter");
 

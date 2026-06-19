@@ -56,6 +56,16 @@ public class GameManager : MonoBehaviour
         {
             UnlockBoost();
         }
+        if(toUnlock ==  3)
+        {
+            UnlockCameraZoom();
+        }
+    }
+
+    void UnlockCameraZoom()
+    {
+        player.zoomUnlocked = true;
+        UIManager.Instance.UnlockZoom();
     }
 
     void UnlockBoost()

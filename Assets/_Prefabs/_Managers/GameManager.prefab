@@ -52,5 +52,7 @@ MonoBehaviour:
   NextUnlock: 0
   LevelUnlocks:
   - {fileID: 11400000, guid: 7cbbf0a01f087f64faad2ce953214320, type: 2}
+  - {fileID: 11400000, guid: d7f806a6670d73e4d817ccf7c2c5208f, type: 2}
+  - {fileID: 11400000, guid: 7cbbf0a01f087f64faad2ce953214320, type: 2}
   - {fileID: 11400000, guid: 1fa0d885e1515b348bb8eacbddb8889e, type: 2}
   - {fileID: 11400000, guid: 7cbbf0a01f087f64faad2ce953214320, type: 2}
